@@ -166,18 +166,6 @@ exports.setDistroCustom = function(distroCustom) {
     config.settings.launcher.distroCustom = distroCustom;
 }
 
-exports.getDistroURL = function() {
-    let distroURL = 'http://localhost/SiteWeb/ressources/download/launcher/beta-version/distribution.json';
-    if(config.settings.launcher.distroCustom == 'true') {
-        distroURL = config.settings.launcher.distroURL;
-    }
-    return distroURL;
-}
-
-exports.setDistroURL = function(distroURL) {
-    config.settings.launcher.distroURL = distroURL;
-}
-
 exports.getClientToken = function() {
     return config.clientToken;
 }

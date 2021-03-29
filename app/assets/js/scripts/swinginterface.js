@@ -9,7 +9,9 @@ const VIEWS = {
     login: '#login-view',
     promotion: '#promotion-view',
     launcher: '#launcher-view',
-    settings: '#settings-view'
+    settings: '#settings-view',
+    loginmicrosoft: '#login-view-microsoft',
+    loginmojang: '#login-view-mojang'
 }
 
 function switchView(current, next, onNextFade = () => {}) {
