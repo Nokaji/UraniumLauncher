@@ -1,14 +1,6 @@
-<p align="center"><img src="https://paladium-pvp.fr/styles/ndzn/paladiumpvp/logo-sm.png" width="400px" height="225px" alt="paladium-pvp"></p>
+<h1 align="center">Uranium Launcher</h1>
 
-<h1 align="center">Paladium Launcher</h1>
-
-<p align="center">
-    <img src="https://img.shields.io/badge/build-dev-red.svg?style=for-the-badge" alt="build">
-    <img src="https://img.shields.io/badge/version-v0.0.01--d13-red.svg?style=for-the-badge" alt="version"> 
-    <img src="https://img.shields.io/badge/dist-windows,%20linux,%20macos-blue.svg?style=for-the-badge" alt="distribution">
-</p>
-
-<p align="center">Paladium Launcher - Beta</p>
+<p align="center">Uranium Launcher - Beta</p>
 
 ## Nouveauté
 
@@ -18,33 +10,13 @@ Toutes les nouveautés concernant les builds du launcher se font ici!
 
 ##### Tu aimes le projet ? Alors mets une petite ⭐ pour soutenir !
 
-## Télécharger
-
-Toutes les versions du launcher sont disponible dans [GitHub Releases](https://github.com/Chaika9/paladiumlauncher/releases)
-
-#### Dernière Release
-[![](https://img.shields.io/badge/release-v0.0.01--d13-red.svg?style=for-the-badge)](https://github.com/Chaika9/paladiumlauncher/releases/latest)
-
-#### Dernière Pre-Release
-[![](https://img.shields.io/badge/release-v0.0.01--d13-red.svg?style=for-the-badge)](https://github.com/Chaika9/paladiumlauncher/releases/latest)
-
 **Plateformes supportées**
 
 | Platform | File |
 | -------- | ---- |
-| Windows x64 | `paladiumlauncher-setup-VERSION.exe` |
-| macOS | `paladiumlauncher-VERSION.dmg` |
-| Linux x64 | `paladiumlauncher-VERSION-x86_64.AppImage` |
-
-## Contribution
-
-Le launcher de Paladium est un projet Open-Source, initié par Chaika9, développeur sur Paladium.  
-Par conséquent, il est ouvert aux contributions externes.  
-Toutefois, si vous souhaitez contribuer, vous devez **impérativement** rejoindre le serveur Discord de développement: https://discord.gg/yv6gSUb  
-  
-Plus d'informations sont disponibles sur ce serveur, dans le channel #devenir-contributeur.
-
-**Toute contribution provenant d'une personne n'ayant pas rejoint le serveur Discord sera automatiquement refusée.**
+| Windows x64 | `uraniumlauncher-setup-VERSION.exe` |
+| macOS | `uraniumlauncher-VERSION.dmg` |
+| Linux x64 | `uraniumlauncher-VERSION-x86_64.AppImage` |
 
 ## Développement
 
@@ -54,14 +26,6 @@ Plus d'informations sont disponibles sur ce serveur, dans le channel #devenir-co
 * [Git][git]
 
 ---
-
-**Cloner et installer les dépendances**
-
-```console
-> git clone https://github.com/Chaika9/paladiumlauncher.git
-> cd paladiumlauncher
-> npm install
-```
 
 ---
 
@@ -100,10 +64,10 @@ Build pour une plateforme spécifique :
 ---
 **Aide projet**
 
-* [HeliosLauncher](https://github.com/dscalzi/HeliosLauncher)
+* [HeliosLauncher](https://github.com/dscalzi/HeliosLauncher) et [Paladium Launcher](https://github.com/terrainwax/Paladium-Launcher)
 
 ---
-Copyright 2019 Paladium. All rights reserved.
+Copyright 2021 Uranium. All rights reserved.
 
 [nodejs]: https://nodejs.org/en/ 'Node.js'
 [git]: https://git-scm.com/ 'Git'
