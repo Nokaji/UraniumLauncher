@@ -6,7 +6,7 @@ const loginButton = document.getElementById('login-button');
 const basicEmail = /^\S+@\S+\.\S+$/;
 
 loginForm.onsubmit = () => { 
-    return false; 
+    return false;
 }
 
 loginButton.addEventListener('click', () => {
