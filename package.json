@@ -1,13 +1,13 @@
 {
   "name": "uraniulauncher",
-  "version": "0.0.1-beta.8",
+  "version": "0.0.1-beta.1",
   "productName": "Uranium Launcher",
   "description": "Uranium Launcher",
   "author": "Uranium",
   "license": "AGPL-3.0",
-  "homepage": "https://uranium-pvp.fr",
+  "homepage": "https://uranium-pvp.fr/",
   "bugs": {
-    "url": "https://uranium.yvleis.fr.fr/index.php?forums/probl%C3%A8me-de-launcher.10/"
+    "url": "https://uranium.yvleis.fr/forum/Launcher.20/"
   },
   "private": true,
   "main": "index.js",
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chaika9/paladiumlauncher.git"
+    "url": "git+https://github.com/Nokaji/UraniumLauncher.git"
   }
 }
