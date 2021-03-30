@@ -1,0 +1,51 @@
+{
+  "name": "uraniulauncher",
+  "version": "0.0.1-beta.8",
+  "productName": "Uranium Launcher",
+  "description": "Uranium Launcher",
+  "author": "Uranium",
+  "license": "AGPL-3.0",
+  "homepage": "https://uranium-pvp.fr",
+  "bugs": {
+    "url": "https://uranium.yvleis.fr.fr/index.php?forums/probl%C3%A8me-de-launcher.10/"
+  },
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "cilinux": "node build.js WINDOWS && node build.js LINUX",
+    "cidarwin": "node build.js MAC",
+    "dist": "cross-env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true node build.js",
+    "dist:win": "npm run dist -- WINDOWS",
+    "dist:mac": "npm run dist -- MAC",
+    "dist:linux": "npm run dist -- LINUX",
+    "lint": "eslint --config .eslintrc.json ."
+  },
+  "engines": {
+    "node": "10.x.x"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.13",
+    "async": "^3.0.1-0",
+    "ejs": "^2.7.1",
+    "ejs-electron": "^2.0.3",
+    "electron-updater": "^4.1.2",
+    "fs-extra": "^7.0.1",
+    "github-syntax-dark": "^0.5.0",
+    "jquery": "^3.4.1",
+    "request": "^2.88.0",
+    "semver": "^6.0.0",
+    "tar-fs": "^2.0.0",
+    "winreg": "^1.2.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "electron": "^7.0.0",
+    "electron-builder": "^21.2.0",
+    "eslint": "^5.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chaika9/paladiumlauncher.git"
+  }
+}
