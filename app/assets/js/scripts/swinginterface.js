@@ -7,7 +7,7 @@
 
  const VIEWS = {
      login: '#login-view',
-     launcher: '#launcher-view',
+     launcher: '#launcher-view'
  }
  
  function switchView(current, next, onNextFade = () => {}) {

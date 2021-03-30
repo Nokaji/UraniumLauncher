@@ -12,7 +12,6 @@ const ejse = require('ejs-electron');
 let frame;
 
 function initialize() {
-    //app.setName('Paladium Launcher');
     app.disableHardwareAcceleration();
 
 	if(makeSingleInstance()) {

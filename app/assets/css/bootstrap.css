@@ -490,36 +490,9 @@ button {
 /** Paladium Loader **/
 /* #region */
 
-.paladium-loader {
+.uranium-loader {
     margin: auto;
     width: calc(5px * 16);
-}
-
-.paladium-loader .square {
-    width: 5px;
-    height: 5px;
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
-.paladium-loader .square-0 {
-    animation: animComeOnLeft 1.8s .0s ease-in infinite;
-}
-.paladium-loader .square-1 {
-    animation: animComeOnUp 1.8s .1s ease-in infinite;
-}
-.paladium-loader .square-2 {
-    animation: animComeOnLeft 1.8s .2s ease-in infinite;
-}
-.paladium-loader .square-3 {
-    animation: animComeOnUp 1.8s .3s ease-in infinite;
-}
-.paladium-loader .square-4 {
-    animation: animComeOnLeft 1.8s .4s ease-in infinite;
-}
-.paladium-loader .square-5 {
-    animation: animComeOnUp 1.8s .4s ease-in infinite;
 }
 
 @keyframes animComeOnUp {

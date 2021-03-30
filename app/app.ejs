@@ -9,24 +9,23 @@
         <link type="text/css" rel="stylesheet" href="./assets/css/bootstrap.css">
 
         <link type="text/css" rel="stylesheet" href="./assets/css/frame.css">
+        <link type="text/css" rel="stylesheet" href="./assets/css/launcher.css">
 
         <script src="./assets/js/scripts/swinger.js"></script>
         <script src="./assets/js/scripts/swinginterface.js"></script>
     </head>
     <body>
         <div id="main">
-
+            <% include launcher.ejs %>
         </div>
-        
+
         <% include frame.ejs %>
-        
+
         <div id="loading-view" style="display: none;">
             <div class="loading-container">
-                <div class="paladium-loader"></div>
-                
+                <img src="./assets/images/icons/icon.png" class="uranium-loader"></img>
                 <div class="loading-text">
                     <p id="loading-splash-text"></p>
-                    <p class="loading-sudmitted-text">Proposé par <span id="loading-sudmitted-author"></span></p>
                     <p id="loading-statut-text">Chargement en cours</p>
                 </div>
             </div>
