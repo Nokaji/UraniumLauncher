@@ -1,5 +1,3 @@
-let currentLoginPanel;
-
 function initLoginView() {
     currentLoginPanel = VIEWS.login;
     $(VIEWS.login).fadeIn(1000);
