@@ -2,8 +2,7 @@ let currentLoginPanel;
 
 const LOGIN_PANELS = {
     loginmicrosoft: '#login-view-microsoft',
-    loginmojang: '#login-view-mojang',
-    login: '#login-view'
+    loginmojang: '#login-view-mojang'
 }
 
 function switchLoginPanel(current, next) {
@@ -13,13 +12,12 @@ function switchLoginPanel(current, next) {
 }
 
 function initLoginView() {
-    currentLoginPanel = LAUNCHER_PANELS.loginmicrosoft;
-    $(LOGIN_PANELS.loginmicrosoft).fadeIn(1000);
+    currentLoginPanel = VIEWS.login;
+    $(VIEWS.login).fadeIn(1000);
     
     initLoginPanel();
 }
 
 function initLoginPanel() {
-    showMainUI(VIEWS.login);
-    switchLoginPanel(LOGIN_PANELS.login);
+    switchView(getCurrentView(), VIEWS.login);
 }
