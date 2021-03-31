@@ -8,6 +8,7 @@ const autoUpdater = require('electron-updater').autoUpdater;
 const path = require('path');
 const url = require('url');
 const ejse = require('ejs-electron');
+const client = require('discord-rich-presence')('747895284616528003');
 
 let frame;
 
@@ -102,3 +103,13 @@ function makeSingleInstance() {
 }
 
 initialize();
+
+client.updatePresence({
+    state: 'slithering',
+    details: '🐍',
+    startTimestamp: Date.now(),
+    endTimestamp: Date.now() + 1337,
+    largeImageKey: 'assets_ura',
+    smallImageKey: 'uranium',
+    instance: true,
+  });

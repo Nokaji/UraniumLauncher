@@ -27,6 +27,7 @@
   "dependencies": {
     "adm-zip": "^0.4.13",
     "async": "^3.0.1-0",
+    "discord-rich-presence": "0.0.8",
     "ejs": "^2.7.1",
     "ejs-electron": "^2.0.3",
     "electron-updater": "^4.1.2",
