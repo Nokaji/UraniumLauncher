@@ -2,12 +2,6 @@
 
 <p align="center">Uranium Launcher - Beta</p>
 
-## Nouveauté
-
-* Le launcher passe en Open Source ♡＾▽＾♡
-
-Toutes les nouveautés concernant les builds du launcher se font ici!
-
 ##### Tu aimes le projet ? Alors mets une petite ⭐ pour soutenir !
 
 **Plateformes supportées**

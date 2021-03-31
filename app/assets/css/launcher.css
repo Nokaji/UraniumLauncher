@@ -86,7 +86,7 @@
     margin-top: 5px;
     width: 0;
     height: 1px;
-    background: #ff8400;
+    background: rgb(0, 177, 24);
 }
 .header .nav .link:hover:after {
     width: 100%;
@@ -232,7 +232,7 @@
     display: inline-block;
 }
 .block-container.block-link a:hover {
-    color: #ff8400;
+    color: rgb(0, 177, 24);
 }
 .block-container.block-link .icon {
     float: right;

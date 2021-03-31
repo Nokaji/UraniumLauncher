@@ -1,3 +1,5 @@
+const $launcherHomePlayButton = $('#launcher-home-play-button');
+
 $(".logo").click(function() {
     initLauncherHomePanel();
 });
@@ -5,26 +7,26 @@ $(".logo").click(function() {
  function initLauncherHomePanel() {
      refreshServer();
  }
- 
+ /*
  $("#launcher-home-options-button").click(function() {
      switchView(getCurrentView(), VIEWS.settings);
      initSettings();
  });
- 
- $('#launcher-home-play-button').click(function() {
-    initLoginView();
+ */
+ $launcherHomePlayButton.click(function() {
+     initLoginView();
  });
  
  document.addEventListener('keydown', (e) => {
      if(getCurrentView() === VIEWS.launcher && currentLauncherPanel === LAUNCHER_PANELS.home) {
-         if(e.key === 'Enter' && $('#launcher-home-play-button').attr("disabled") != "disabled") {
+         if(e.key === 'Enter' && $launcherHomePlayButton.attr("disabled") != "disabled") {
               gameUpdate();
          }
      }
  });
- 
+
  function refreshServer() {
-     var uranium_server = require(".../minecraftserver");
+     var uranium_server = require("./assets/js/minecraftserver");
      uranium_server.init('uranium.yvleis.fr', 25565, function(result) {
          if(uranium_server.online) {
              $("#server-uranium-players").html(uranium_server.current_players);

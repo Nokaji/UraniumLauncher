@@ -1,16 +1,5 @@
 let currentLoginPanel;
 
-const LOGIN_PANELS = {
-    loginmicrosoft: '#login-view-microsoft',
-    loginmojang: '#login-view-mojang'
-}
-
-function switchLoginPanel(current, next) {
-    loginmicrosoft = next;
-    $(`${current}`).hide();
-    $(`${next}`).fadeIn(500);
-}
-
 function initLoginView() {
     currentLoginPanel = VIEWS.login;
     $(VIEWS.login).fadeIn(1000);
@@ -21,3 +10,11 @@ function initLoginView() {
 function initLoginPanel() {
     switchView(getCurrentView(), VIEWS.login);
 }
+
+$("#login-mojang").click(function() {
+    switchView(getCurrentView(), VIEWS.loginmojang);
+});
+
+$("#login-microsoft").click(function() {
+    switchView(getCurrentView(), VIEWS.loginmicrosoft);
+});

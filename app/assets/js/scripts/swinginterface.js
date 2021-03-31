@@ -6,8 +6,10 @@
  let currentView;
 
  const VIEWS = {
+     launcher: '#launcher-view',
      login: '#login-view',
-     launcher: '#launcher-view'
+     loginmicrosoft: '#login-view-microsoft',
+     loginmojang: '#login-view-mojang'
  }
  
  function switchView(current, next, onNextFade = () => {}) {

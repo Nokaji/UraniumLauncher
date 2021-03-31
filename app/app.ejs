@@ -5,11 +5,14 @@
 
         <link type="text/css" rel="stylesheet" href="./assets/css/fonts.css">
         <link rel="stylesheet" href="./assets/fontawesome/css/all.css">
+
+        <link rel="stylesheet" href="./assets/css/iziToast.css">
         
         <link type="text/css" rel="stylesheet" href="./assets/css/bootstrap.css">
 
         <link type="text/css" rel="stylesheet" href="./assets/css/frame.css">
         <link type="text/css" rel="stylesheet" href="./assets/css/launcher.css">
+        <link rel="stylesheet" href="./assets/css/login.css">
 
         <script src="./assets/js/scripts/swinger.js"></script>
         <script src="./assets/js/scripts/swinginterface.js"></script>
@@ -20,6 +23,10 @@
             <% include launcher.ejs %>
             <!-- Login Panel -->
             <% include login.ejs %>
+            <!-- LoginMojangAuth -->
+            <% include login/loginmojang.ejs %>
+            <!-- LoginMicrosoftAuth -->
+            <% include login/loginmicrosoft.ejs %>
         </div>
 
         <% include frame.ejs %>
