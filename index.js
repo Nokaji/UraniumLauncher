@@ -1,8 +1,3 @@
-/**
- * Paladium Launcher - https://github.com/Chaika9/paladiumlauncher
- * Copyright (C) 2019 Paladium
- */
-
 const {app, BrowserWindow, ipcMain} = require('electron');
 const autoUpdater = require('electron-updater').autoUpdater;
 const path = require('path');
