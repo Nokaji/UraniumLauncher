@@ -39,6 +39,7 @@
     "request": "^2.88.0",
     "semver": "^6.0.0",
     "tar-fs": "^2.0.0",
+    "update-electron-app": "^2.0.1",
     "winreg": "^1.2.4"
   },
   "devDependencies": {

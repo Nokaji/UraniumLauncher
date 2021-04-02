@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain} = require('electron');
+const {app, BrowserWindow, ipcMain, autoUpdater} = require('electron');
 const autoUpdater = require('electron-updater').autoUpdater;
 const path = require('path');
 const url = require('url');
@@ -7,7 +7,7 @@ const ejse = require('ejs-electron');
 const isDev = require('./app/assets/js/isdev');
 
 let frame;
-/*
+
 let isInitAutoUpdater = false;
 
 function initAutoUpdater(event) {
@@ -40,7 +40,7 @@ function initAutoUpdater(event) {
     autoUpdater.on('error', (err) => {
         event.sender.send('autoUpdateNotification', 'realerror', err);
     });
-}*/
+}
 
 
 function initialize() {
@@ -49,7 +49,7 @@ function initialize() {
 	if(makeSingleInstance()) {
 		return app.quit();
     }
-    /*
+    
 
     ipcMain.on('autoUpdateAction', (event, arg, data) => {
         switch(arg) {
@@ -81,7 +81,7 @@ function initialize() {
             }
         }
     });
-    */
+    
    
     app.on('ready', () => {
         createWindow();
