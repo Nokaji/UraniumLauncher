@@ -2,6 +2,7 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
 
 $(".logo").click(function() {
     initLauncherHomePanel();
+    test_overlay();
 });
 
  function initLauncherHomePanel() {
@@ -38,4 +39,14 @@ $(".logo").click(function() {
              $("#server-total-players").html("0 <i class=\"offline\"></i>");
          }
      });
+ }
+
+ function test_overlay(){
+    setOverlayContent('Ceci est un test',
+    'Ceci est un test alors rien à faire :)',
+    'Fermer le launcher', null, 15, 'Tentative de reconnexion dans');
+    toggleOverlay(true);
+    setCloseHandler(() => {
+        print("Button close pressed !")
+    });
  }

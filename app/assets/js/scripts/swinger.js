@@ -1,6 +1,13 @@
 const $ = require('jquery');
-const {remote, shell, webFrame} = require('electron');
+const {remote, shell, webFrame} = require('electron');/*
+const LoggerUtil = require('./assets/js/loggerutil');
 
+const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
+
+const launcherVersion = "0.0.1-beta.1";
+
+loggerLauncher.log('Uranium Launcher (v' + launcherVersion + ") started on " + Library.mojangFriendlyOS() + "..");
+*/
 // Disable zoom, needed for darwin.
 webFrame.setZoomLevel(0);
 webFrame.setVisualZoomLevelLimits(1, 1);
