@@ -1,13 +1,17 @@
 const $ = require('jquery');
-const {remote, shell, webFrame} = require('electron');/*
-const LoggerUtil = require('./assets/js/loggerutil');
+const {remote, shell, webFrame} = require('electron');
 
-const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
+const request = require('request');
+const cp = require('child_process');
+const path = require('path');
 
-const launcherVersion = "0.0.1-beta.1";
+process.traceProcessWarnings = true;
+process.traceDeprecation = true;
 
-loggerLauncher.log('Uranium Launcher (v' + launcherVersion + ") started on " + Library.mojangFriendlyOS() + "..");
-*/
+window.eval = global.eval = function () {
+    throw new Error('Sorry, this app does not support window.eval().');
+}
+
 // Disable zoom, needed for darwin.
 webFrame.setZoomLevel(0);
 webFrame.setVisualZoomLevelLimits(1, 1);
@@ -18,6 +22,9 @@ $(function() {
 })
 
 function initSwinger() {
+
+    showLoading();
+
     frameEvent();
     bindRangeSlider();
 }
@@ -32,7 +39,22 @@ document.addEventListener('readystatechange', function() {
 }, false);
 
 function initLauncher() {
-    showLoading();
+    if(navigator.onLine){
+        showMainUI(VIEWS.launcher);
+        initLauncherView();
+    }else{
+        setOverlayContent('Impossible de se connecter à Internet 🌐',
+        '✋🏽Vérifiez votre connexion et votre proxy si vous en utilisez un.',
+        'Fermer le launcher', null, 15, 'Tentative de reconnexion dans');
+        toggleOverlay(true);
+        setCloseHandler(() => {
+            closeLauncher();
+        });
+        setTimeout(function() {
+            toggleOverlay(false);
+            initLauncher();
+        }, 15000);
+    }
 }
 
 // #endregion
@@ -179,10 +201,9 @@ function showLoading() {
     $('#loading-view').fadeIn(500);
 
     setTimeout(hideLoading(), 5000);
+    initLauncher();
 }
 
 function hideLoading() {
     $('#loading-view').fadeOut(500);
-    showMainUI(VIEWS.launcher);
-    initLauncherView();
 }

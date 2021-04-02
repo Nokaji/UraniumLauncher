@@ -1,13 +1,11 @@
 const $launcherHomePlayButton = $('#launcher-home-play-button');
 
-$(".logo").click(function() {
-    initLauncherHomePanel();
-    test_overlay();
-});
-
  function initLauncherHomePanel() {
-     refreshServer();
+    setInterval(function() {
+        refreshServer();
+      }, 1500);
  }
+
  /*
  $("#launcher-home-options-button").click(function() {
      switchView(getCurrentView(), VIEWS.settings);
@@ -32,21 +30,24 @@ $(".logo").click(function() {
          if(uranium_server.online) {
              $("#server-uranium-players").html(uranium_server.current_players);
              $("#server-uranium-latency").html(uranium_server.latency);
- 
-             $("#server-total-players").html(uranium_server.current_players + " <i class=\"online\"></i>");
+
+             ("#server-total-players").html(uranium_server.current_players + " <i class=\"online\"></i>");
          }
          else {
              $("#server-total-players").html("0 <i class=\"offline\"></i>");
          }
      });
  }
+/*
+ Test de PopUp Warning !
 
  function test_overlay(){
     setOverlayContent('Ceci est un test',
     'Ceci est un test alors rien à faire :)',
-    'Fermer le launcher', null, 15, 'Tentative de reconnexion dans');
+    'Fermer le popup', null, 15, 'Tentative de reconnexion dans');
     toggleOverlay(true);
     setCloseHandler(() => {
-        print("Button close pressed !")
+        closeLauncher();
     });
  }
+ */
