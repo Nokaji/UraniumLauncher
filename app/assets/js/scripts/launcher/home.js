@@ -31,7 +31,7 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
              $("#server-uranium-players").html(uranium_server.current_players);
              $("#server-uranium-latency").html(uranium_server.latency);
 
-             ("#server-total-players").html(uranium_server.current_players + " <i class=\"online\"></i>");
+             $("#server-total-players").html(uranium_server.current_players + " <i class=\"online\"></i>");
          }
          else {
              $("#server-total-players").html("0 <i class=\"offline\"></i>");
