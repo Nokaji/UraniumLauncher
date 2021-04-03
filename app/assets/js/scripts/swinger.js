@@ -15,28 +15,35 @@ const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-we
 
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
-
-const launcherVersionJson = require("./app/assets/distri.json");
-
 /*
 const launcherVersionJsonMin = JSON.parse(launcherVersionJson)
 
 const launcherVersionMin = launcherVersionJsonMin.launcher.version;
 */
 //Test
-fs.readFile("", 'utf8', (err, jsonString) => {
-    if (err) {
-        console.log("Error reading file from disk:", err)
-        return
+
+function loadJSON(path, success, error) {
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+        success(JSON.parse(xhr.responseText));
     }
-    try {
-        const customer = JSON.parse(jsonString)
-        console.log("Customer address is:", customer.address) // => "Customer address is: Infinity Loop Drive"
-} catch(err) {
-        console.log('Error parsing JSON string:', err)
+    else {
+        error(xhr);
     }
-})
-//test
+    }
+};
+xhr.open('GET', path, true);
+xhr.send();
+}
+
+let launcherVersionJson = loadJSON('https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json');
+
+let jsonData = require(launcherVersionJson);
+
+let data = JSON.stringify(jsonData);
+fs.writeFileSync('student-2.json', data);
 
 console.log("La Version requise est " + launcherVersionMin);
 
