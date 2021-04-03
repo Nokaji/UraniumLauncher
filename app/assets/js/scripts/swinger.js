@@ -22,7 +22,6 @@ $(function() {
 })
 
 function initSwinger() {
-
     showLoading();
 
     frameEvent();

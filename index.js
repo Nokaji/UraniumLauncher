@@ -1,5 +1,4 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
-const autoUpdater = require('electron-updater').autoUpdater;
 const path = require('path');
 const url = require('url');
 const ejse = require('ejs-electron');
