@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, autoUpdater} = require('electron');
+const {app, BrowserWindow, ipcMain} = require('electron');
 const autoUpdater = require('electron-updater').autoUpdater;
 const path = require('path');
 const url = require('url');
@@ -8,80 +8,12 @@ const isDev = require('./app/assets/js/isdev');
 
 let frame;
 
-let isInitAutoUpdater = false;
-
-function initAutoUpdater(event) {
-    autoUpdater.autoDownload = false;
-    autoUpdater.allowPrerelease = true;
-
-    if(isDev) {
-        autoUpdater.autoInstallOnAppQuit = false;
-        autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml');
-    }
-    if(process.platform === 'darwin') {
-        autoUpdater.autoDownload = false
-    }
-
-    autoUpdater.on('update-available', info => {
-        event.sender.send('autoUpdateNotification', 'update-available', info);
-    });
-    autoUpdater.on('update-downloaded', info => {
-        event.sender.send('autoUpdateNotification', 'update-downloaded', info);
-    });
-    autoUpdater.on('download-progress', (info) => {
-        event.sender.send('autoUpdateNotification', 'download-progress', info);
-    });
-    autoUpdater.on('update-not-available', info => {
-        event.sender.send('autoUpdateNotification', 'update-not-available', info);
-    });
-    autoUpdater.on('checking-for-update', () => {
-        event.sender.send('autoUpdateNotification', 'checking-for-update');
-    });
-    autoUpdater.on('error', (err) => {
-        event.sender.send('autoUpdateNotification', 'realerror', err);
-    });
-}
-
-
 function initialize() {
     app.disableHardwareAcceleration();
 
 	if(makeSingleInstance()) {
 		return app.quit();
     }
-    
-
-    ipcMain.on('autoUpdateAction', (event, arg, data) => {
-        switch(arg) {
-            case 'initAutoUpdater': {
-                if(!isInitAutoUpdater) {
-                    initAutoUpdater(event);
-                    isInitAutoUpdater = true;
-                }
-                event.sender.send('autoUpdateNotification', 'ready');
-                break;
-            }
-            case 'checkForUpdate': {
-                autoUpdater.checkForUpdates().catch(err => {
-                    event.sender.send('autoUpdateNotification', 'realerror', err);
-                });
-                break;
-            }
-            case 'downloadUpdate': {
-                autoUpdater.downloadUpdate();
-                break;
-            }
-            case 'installUpdateNow': {
-                autoUpdater.quitAndInstall();
-                break;
-            }
-            default: {
-                console.log('Unknown argument', arg);
-                break;
-            }
-        }
-    });
-    
    
     app.on('ready', () => {
         createWindow();

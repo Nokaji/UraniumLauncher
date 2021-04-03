@@ -40,6 +40,7 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
+        refreshServer();
         showMainUI(VIEWS.launcher);
         initLauncherView();
     }else{
