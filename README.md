@@ -7,6 +7,7 @@
     <img src="https://img.shields.io/badge/dist-windows,%20linux,%20macos-blue.svg?style=for-the-badge" alt="distribution">
 </p>
 
+##### Le launcher est en Open Source :)
 ##### Tu aimes le projet ? Alors mets une petite ⭐ pour soutenir !
 
 **Plateformes supportées**
