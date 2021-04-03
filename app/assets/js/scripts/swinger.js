@@ -8,10 +8,16 @@ const path = require('path');
 
 const isDev = require('./assets/js/isdev');
 
+const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');
+const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
 const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-weight: bold');
 
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
+
+const launcherVersionJson = require('./assets/distri');
+
+const launcherVersion = "0.0.01-01";
 
 window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
@@ -23,14 +29,17 @@ webFrame.setVisualZoomLevelLimits(1, 1);
 webFrame.setLayoutZoomLevelLimits(0, 0);
 
 $(function() {
+    loggerSwinger.log("Swinger Initialized.");
     initSwinger();
 })
 
 function initSwinger() {
+    loggerSwinger.log("Swiger Initializing.");
     frameEvent();
     bindRangeSlider();
 
     showLoading();
+    setLoadingStatut("Chargement des éléments d'interface");
 }
 
 // Init Launcher Functions
@@ -44,8 +53,8 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
-        updaterVerify();
         refreshServer();
+        updaterVerify();
         showMainUI(VIEWS.launcher);
         initLauncherView();
     }else{
@@ -63,7 +72,13 @@ function initLauncher() {
     }
 }
 
-function updaterVerify(){
+function updaterVerify(){/*
+    let forceUpdate = false;
+    var versionMin = parseLauncherVersion();
+    var version = parseLauncherVersion(launcherVersion);
+    if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
+        forceUpdate = true;
+    }*/
     ipcRenderer.on('autoUpdateNotification', (event, arg, info) => {
         switch(arg) {
             case 'checking-for-update': {
@@ -111,7 +126,7 @@ function updaterVerify(){
                     else {
                         setOverlayContent('Mise à jour du launcher disponible 😘',
                             'Une nouvelle mise à jour pour le launcher est disponible.' 
-                            + '<br>Vous pouvez la télécharger sur le site officiel de Paladium.'
+                            + '<br>Vous pouvez la télécharger sur le site officiel de Uranium.'
                             + '<br><br><i class="fas fa-chevron-right"></i> Cette mise à niveau est obligatoire pour pouvoir continuer.',
                             'Fermer le launcher');
                         toggleOverlay(true);
@@ -127,7 +142,7 @@ function updaterVerify(){
                 if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
                     setOverlayContent('Launcher obselète',
                             'Votre launcher est obselète !' 
-                            + '<br><br><i class="fas fa-chevron-right"></i> Merci de retélécharger le launcher sur le site officiel de Paladium.',
+                            + '<br><br><i class="fas fa-chevron-right"></i> Merci de retélécharger le launcher sur le site officiel de Uranium.',
                             'Fermer le launcher');
                         toggleOverlay(true);
                         setCloseHandler(() => {
@@ -177,8 +192,8 @@ function updaterVerify(){
                         loggerAutoUpdater.debug('Error Code:', info.code);
                     }
 
-                    setOverlayContent('Impossible de ce connecter au serveur 😭',
-                        'Merci de vérifier votre connexion à internet ou votre proxy si vous en utilisez un.',
+                    setOverlayContent('Impossible de se connecter à Internet 🌐',
+                        '✋🏽Vérifiez votre connexion et votre proxy si vous en utilisez un.',
                         'Fermer le launcher', 'Réessayer');
                     toggleOverlay(true);
                     setCloseHandler(() => {
