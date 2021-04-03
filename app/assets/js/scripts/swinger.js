@@ -31,13 +31,15 @@ window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
 }
 
-//Version Récentes
+function updaterVerify(){
+//Version Récente
 axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json")
 .then(response => {
-    VersionLauncherMin = (response.data.launcher.version);
-    return VersionLauncherMin;
+    VersionLauncherMin = response.data.launcher.version;
+    console.log("Récents version " + VersionLauncherMin);
+    updaterVerifyUpdate();
 });
-console.log("Récents version " + VersionLauncherMin);
+}
 
 // Disable zoom, needed for darwin.
 webFrame.setZoomLevel(0);
@@ -88,13 +90,13 @@ function initLauncher() {
     }
 }
 
-function updaterVerify(){/*
+function updaterVerifyUpdate(){
     let forceUpdate = false;
-    var versionMin = parseLauncherVersion();
+    var versionMin = parseLauncherVersion(VersionLauncherMin);
     var version = parseLauncherVersion(launcherVersion);
     if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
         forceUpdate = true;
-    }*/
+    }
     ipcRenderer.on('autoUpdateNotification', (event, arg, info) => {
         switch(arg) {
             case 'checking-for-update': {
