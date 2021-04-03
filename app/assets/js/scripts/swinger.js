@@ -7,6 +7,7 @@ const cp = require('child_process');
 const path = require('path');
 
 const isDev = require('./assets/js/isdev');
+const fs = require('fs');
 
 const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');
 const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
@@ -15,7 +16,29 @@ const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-we
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
 
-const launcherVersionJson = require('./assets/distri');
+const launcherVersionJson = require("./app/assets/distri.json");
+
+/*
+const launcherVersionJsonMin = JSON.parse(launcherVersionJson)
+
+const launcherVersionMin = launcherVersionJsonMin.launcher.version;
+*/
+//Test
+fs.readFile("", 'utf8', (err, jsonString) => {
+    if (err) {
+        console.log("Error reading file from disk:", err)
+        return
+    }
+    try {
+        const customer = JSON.parse(jsonString)
+        console.log("Customer address is:", customer.address) // => "Customer address is: Infinity Loop Drive"
+} catch(err) {
+        console.log('Error parsing JSON string:', err)
+    }
+})
+//test
+
+console.log("La Version requise est " + launcherVersionMin);
 
 const launcherVersion = "0.0.01-01";
 
