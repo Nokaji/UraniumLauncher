@@ -12,25 +12,6 @@ const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bo
 const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
 const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-weight: bold');
 
-//Discord Rpc
-//Client : 747895284616528003
-const RPC = require('discord-rpc');
-const rpc = new RPC.Client({
-    transport: "ipc"
-});
-
-rpc.on("ready", () => {
-    rpc.setActivity({
-        details: "Uranium Launcher",
-        state: "Rich Presence Test"
-    });
-});
-
-rpc.login({
-    clientId: "747895284616528003"
-})
-//End Discord Rpc
-
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
 
@@ -72,7 +53,6 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
-        updateRichPres();
         refreshServer();
         updaterVerify();
         showMainUI(VIEWS.launcher);
