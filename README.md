@@ -27,8 +27,6 @@
 
 ---
 
----
-
 **Lancer l'application**
 
 ```console
