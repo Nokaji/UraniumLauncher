@@ -43,8 +43,6 @@ Pour ouvrir la console, utilisez le raccourci clavier suivant :
 ctrl + shift + i
 ```
 
----
-
 **Installateurs**
 
 Build pour sa plateforme :
