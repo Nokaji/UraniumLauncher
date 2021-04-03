@@ -1,9 +1,14 @@
 const $ = require('jquery');
-const {remote, shell, webFrame} = require('electron');
+const {remote, shell, webFrame, ipcRenderer} = require('electron');
 
+const LoggerUtil = require('./assets/js/loggerutil');
 const request = require('request');
 const cp = require('child_process');
 const path = require('path');
+
+const isDev = require('./assets/js/isdev');
+
+const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-weight: bold');
 
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
@@ -22,10 +27,10 @@ $(function() {
 })
 
 function initSwinger() {
-    showLoading();
-
     frameEvent();
     bindRangeSlider();
+
+    showLoading();
 }
 
 // Init Launcher Functions
@@ -39,6 +44,7 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
+        updaterVerify();
         refreshServer();
         showMainUI(VIEWS.launcher);
         initLauncherView();
@@ -55,6 +61,142 @@ function initLauncher() {
             initLauncher();
         }, 15000);
     }
+}
+
+function updaterVerify(){
+    ipcRenderer.on('autoUpdateNotification', (event, arg, info) => {
+        switch(arg) {
+            case 'checking-for-update': {
+                loggerAutoUpdater.log('Checking for update..');
+                setLoadingStatut('Recherche de mise à jour');
+                break;
+            }
+            case 'update-available': {
+                loggerAutoUpdater.log('New update available:', info.version);
+
+                if(!forceUpdate && process.platform == 'win32') { // Temp
+                    setOverlayContent('Mise à jour du launcher disponible 😘',
+                        'Une nouvelle mise à jour pour le launcher est disponible.' 
+                        + '<br>Voulez-vous l\'installer maintenant ?',
+                        'Plus tard', 'Télécharger');
+                    toggleOverlay(true);
+                    setCloseHandler(() => {
+                        toggleOverlay(false);
+                        onAutoUpdateFinish();
+                    });
+                    setActionHandler(() => {
+                        toggleOverlay(false);
+                        setLoadingStatut('Préparation de la mise à jour (peut prendre un moment)');
+                        ipcRenderer.send('autoUpdateAction', 'downloadUpdate');
+                    });
+                }
+                else {
+                    if(process.platform == 'win32') { // Temp
+                        setOverlayContent('Mise à jour du launcher disponible 😘',
+                            'Une nouvelle mise à jour pour le launcher est disponible.' 
+                            + '<br>Voulez-vous l\'installer maintenant ?'
+                            + '<br><br><i class="fas fa-chevron-right"></i> Cette mise à niveau est obligatoire pour pouvoir continuer.',
+                            'Fermer le launcher', 'Télécharger');
+                        toggleOverlay(true);
+                        setCloseHandler(() => {
+                            toggleOverlay(false);
+                            closeLauncher();
+                        });
+                        setActionHandler(() => {
+                            toggleOverlay(false);
+                            setLoadingStatut('Préparation de la mise à jour (peut prendre un moment)');
+                            ipcRenderer.send('autoUpdateAction', 'downloadUpdate');
+                        });
+                    }
+                    else {
+                        setOverlayContent('Mise à jour du launcher disponible 😘',
+                            'Une nouvelle mise à jour pour le launcher est disponible.' 
+                            + '<br>Vous pouvez la télécharger sur le site officiel de Paladium.'
+                            + '<br><br><i class="fas fa-chevron-right"></i> Cette mise à niveau est obligatoire pour pouvoir continuer.',
+                            'Fermer le launcher');
+                        toggleOverlay(true);
+                        setCloseHandler(() => {
+                            toggleOverlay(false);
+                            closeLauncher();
+                        });
+                    }
+                }
+                break;
+            }
+            case 'update-not-available': {
+                if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
+                    setOverlayContent('Launcher obselète',
+                            'Votre launcher est obselète !' 
+                            + '<br><br><i class="fas fa-chevron-right"></i> Merci de retélécharger le launcher sur le site officiel de Paladium.',
+                            'Fermer le launcher');
+                        toggleOverlay(true);
+                        setCloseHandler(() => {
+                            closeLauncher();
+                        });
+                    return;
+                }
+                else {
+                    onAutoUpdateFinish();
+                }
+                break;
+            }
+            case 'download-progress': {
+                setLoadingStatut('Mise à jour en cours (' + Math.round(info.percent) + "%)");
+                break;
+            }
+            case 'update-downloaded': {
+                loggerAutoUpdater.log('Update ' + info.version + ' ready to be installed.');
+
+                setOverlayContent('La mise à jour est prêt à être installé 😁',
+                    'Cliquer sur installer pour lancer l\'installation de ma mise à jour du launcher.',
+                    'Plus tard (Ferme le launcher)', 'Installer');
+                toggleOverlay(true);
+                setCloseHandler(() => {
+                    closeLauncher();
+                });
+                setActionHandler(() => {
+                    toggleOverlay(false);
+                    ipcRenderer.send('autoUpdateAction', 'installUpdateNow');
+                });
+                break;
+            }
+            case 'ready': {
+                ipcRenderer.send('autoUpdateAction', 'checkForUpdate');
+                break;
+            }
+            case 'realerror': {
+                if(info != null && info.code != null) {
+                    if(info.code === 'ERR_UPDATER_INVALID_RELEASE_FEED') {
+                        loggerAutoUpdater.log('No suitable releases found.');
+                    } 
+                    else if(info.code === 'ERR_XML_MISSED_ELEMENT') {
+                        loggerAutoUpdater.log('No releases found.');
+                    } 
+                    else {
+                        loggerAutoUpdater.error('Error during update check..', info);
+                        loggerAutoUpdater.debug('Error Code:', info.code);
+                    }
+
+                    setOverlayContent('Impossible de ce connecter au serveur 😭',
+                        'Merci de vérifier votre connexion à internet ou votre proxy si vous en utilisez un.',
+                        'Fermer le launcher', 'Réessayer');
+                    toggleOverlay(true);
+                    setCloseHandler(() => {
+                        closeLauncher();
+                    });
+                    setActionHandler(() => {
+                        toggleOverlay(false);
+                        ipcRenderer.send('autoUpdateAction', 'initAutoUpdater');
+                    });
+                }
+                break;
+            }
+            default: {
+                loggerAutoUpdater.log('Unknown argument', arg);
+                break;
+            }
+        }
+    });
 }
 
 // #endregion
