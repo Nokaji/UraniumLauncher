@@ -8,6 +8,7 @@ const path = require('path');
 
 const isDev = require('./assets/js/isdev');
 const fs = require('fs');
+const axios = require('axios');
 
 const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');
 const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
@@ -15,43 +16,28 @@ const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-we
 
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
-/*
-const launcherVersionJsonMin = JSON.parse(launcherVersionJson)
 
-const launcherVersionMin = launcherVersionJsonMin.launcher.version;
-*/
-//Test
+loggerLauncher.log("Chargement des variables");
 
-function loadJSON(path, success, error) {
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-        success(JSON.parse(xhr.responseText));
-    }
-    else {
-        error(xhr);
-    }
-    }
-};
-xhr.open('GET', path, true);
-xhr.send();
-}
+//version Actuel
+var version = ("./package.json");
 
-let launcherVersionJson = loadJSON('https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json');
+let rawdata = fs.readFileSync(version);
+let versions = JSON.parse(rawdata);
 
-let jsonData = require(launcherVersionJson);
-
-let data = JSON.stringify(jsonData);
-fs.writeFileSync('student-2.json', data);
-
-console.log("La Version requise est " + launcherVersionMin);
-
-const launcherVersion = "0.0.01-01";
+console.log("Actuel Version : " + versions.version);
 
 window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
 }
+
+//Version Récentes
+axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json")
+.then(response => {
+    VersionLauncherMin = (response.data.launcher.version);
+    return VersionLauncherMin;
+});
+console.log("Récents version " + VersionLauncherMin);
 
 // Disable zoom, needed for darwin.
 webFrame.setZoomLevel(0);
