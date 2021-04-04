@@ -5,12 +5,12 @@ const electron = require('electron');
 
 const os = require('os');
 
-var version = ("./app/assets/distri.json");
+var version = ("./package.json");
 
 let rawdata = fs.readFileSync(version);
 let versions = JSON.parse(rawdata);
 
-VersionLauncher = (versions.launcher.version);
+VersionLauncher = (versions.version);
 
 console.log("Actuel Version : " + VersionLauncher);
 

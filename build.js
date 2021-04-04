@@ -28,7 +28,7 @@ builder.build( {
         artifactName: '${productName}.${ext}',
         copyright: 'Copyright © 2019 Uranium',
         directories: {
-            buildResources: 'build',
+            buildResources: 'assets',
             output: 'dist'
         },
         win: {
@@ -38,20 +38,20 @@ builder.build( {
                     arch: 'x64'
                 }
             ],
-            icon: 'build/icon.ico'
+            icon: 'app/assets/images/icons/icon.ico'
         },
         nsis: {
             oneClick: false,
             perMachine: true,
             allowElevation: true,
-            installerIcon: 'build/icon.ico',
-            uninstallerIcon: 'build/icon.ico',
+            installerIcon: 'app/assets/images/icons/icon.ico',
+            uninstallerIcon: 'app/assets/images/icons//icon.ico',
             allowToChangeInstallationDirectory: true
         },
         mac: {
             target: 'dmg',
             category: 'public.app-category.games',
-            icon: 'build/icon.icns'
+            icon: 'app/assets/images/icons/icon.icns'
         },
         linux: {
             target: 'AppImage',
@@ -63,7 +63,8 @@ builder.build( {
         },
         compression: 'maximum',
         files: [
-            '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.travis.yml,.nvmrc,.eslintrc.json,build.js}'
+            '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.travis.yml,.nvmrc,.eslintrc.json,build.js}',
+            'package.json'
         ],
         asar: true
     }

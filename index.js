@@ -4,8 +4,6 @@ const url = require('url');
 const ejse = require('ejs-electron');
 const {download} = require("electron-dl");
 
-const isDev = require('./app/assets/js/isdev');
-
 let frame;
 
 function initialize(){
