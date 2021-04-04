@@ -35,8 +35,8 @@ function updaterVerify(){
         }else{
             if(VersionLauncherMin != VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
-                'Télécharge le la version du launcher pour pouvoir avoir la nouvelle version !',
-                'Fermer', 'Télécharger', 20, 'Le Popup va se fermer dans');
+                'Télécharge la version du launcher pour pouvoir avoir la nouvelle version !',
+                'Fermer', 'Télécharger');
                 toggleOverlay(true);
                 setCloseHandler(() => {
                     toggleOverlay(false);
@@ -44,16 +44,13 @@ function updaterVerify(){
                 setActionHandler(() => {
                     downloadUpdate();
                 });
-                setTimeout(function() {
-                    toggleOverlay(false);
-                }, 20000);
             }
         }
     });
 }
 
 function downloadUpdate(){
-    setOverlayContent('Version Launcher en cours',
+    setOverlayContent('Téléchargement en Préparation !',
     'La nouvelle version du launcher est en cours de téléchargement, ne ferme pas le launcher si tu veux la nouvelle version',
     'Fermer le launcher', 'Attendre et Fermer le popup');
     setCloseHandler(() => {
@@ -80,28 +77,31 @@ function downloadUpdate(){
 }
 
 function downloadComplete(){
-    ipcRenderer.on("download complete", (event, file) => {
-        
-        console.log("Downloaded " + file);
-
-        function executeFile() {
+    function executeFile() {
             
-            var child = require('child_process').execFile;
-            var executablePath = file;
+        var child = require('child_process').execFile;
+        var executablePath = file;
 
-            child(executablePath, function(err, data) {
-            if(err){
-                console.error(err);
-                return;
-            }
-        
-            console.log(data.toString());
-            });
+        child(executablePath, function(err, data) {
+        if(err){
+            console.error(err);
+            return;
         }
+    
+        console.log(data.toString());
+        });
+    }
+    ipcRenderer.on("download complete", (event, file) => {
+        console.log("Downloaded " + file);
+        setOverlayContent('Téléchargement est Terminé',
+        'Le Téléchargement est fini le launcher va se redémarrer automatiquement :)',
+        'Installer La Mise à Jour', null);
+        setCloseHandler(() => {
+            toggleOverlay(false);
+        });
 
         executeFile();
 
         setTimeout(closeLauncher, 5000);
-
     });
 }
