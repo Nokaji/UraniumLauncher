@@ -24,18 +24,19 @@ function updaterVerify(){
         console.log("Récents version " + VersionLauncherMin);
         if(VersionLauncherMin == VersionLauncher){
             console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
-            document.getElementById("")
+            document.getElementById("version-actuel").style.visibility = "visible";
         }else{
-            let forceUpdate = true;
+            document.getElementById("version-none-actuel").style.visibility = "visible";
+            /*let forceUpdate = true;
             var fileexe;
             if(process.platform === 'darwin') {
-                fileexe = '.icns';
+                fileexe = '.dmg';
             } 
             else if(process.platform === 'win32') {
                 fileexe = '.exe';
             }
             else{
-                fileexe = '.dmg';
+                fileexe = '.';
             }
             if(VersionLauncherMin != VersionLauncher){
                 if(forceUpdate == true){
@@ -44,7 +45,7 @@ function updaterVerify(){
                         properties: {directory: electron.remote.app.getPath("temp")}
                     });
                 }
-            }
+            }*/
         }
     });
 }
