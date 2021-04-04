@@ -63,8 +63,7 @@ builder.build( {
         },
         compression: 'maximum',
         files: [
-            '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.travis.yml,.nvmrc,.eslintrc.json,build.js}',
-            'package.json'
+            '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.travis.yml,.nvmrc,.eslintrc.json,build.js}'
         ],
         asar: true
     }

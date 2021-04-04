@@ -5,12 +5,7 @@ const electron = require('electron');
 
 const os = require('os');
 
-var version = ("./package.json");
-
-let rawdata = fs.readFileSync(version);
-let versions = JSON.parse(rawdata);
-
-VersionLauncher = (versions.version);
+VersionLauncher = "0.0.3";
 
 console.log("Actuel Version : " + VersionLauncher);
 
