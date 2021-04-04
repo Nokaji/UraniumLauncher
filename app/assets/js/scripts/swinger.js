@@ -213,7 +213,7 @@ function showLoading() {
 
     setTimeout(function() {
         hideLoading();
-    }, 6000);
+    }, 7500);
     initLauncher();
 }
 
