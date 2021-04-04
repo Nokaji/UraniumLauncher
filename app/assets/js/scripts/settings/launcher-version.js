@@ -5,3 +5,7 @@ function initSettingsLauncherVersionTab() {
 $("#actuel-version-launcher").click(function() {
     updaterVerify();
 });
+
+$("#download-update").click(function() {
+    downloadUpdate();
+});
