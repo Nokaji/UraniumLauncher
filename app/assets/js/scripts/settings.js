@@ -1,5 +1,21 @@
 let currentSettingsPanel;
 
+const SETTINGS_PANELS = {
+    versionlauncher: '#settings-version-launcher-panel'
+}
+
+function switchSettingsPanel(current, next) {
+    currentSettingsPanel = next;
+    $(`${current}`).hide();
+    $(`${next}`).fadeIn(500);
+}
+
+function initSettingsView() {
+    currentSettingsPanel = SETTINGS_PANELS.versionlauncher;
+    $(SETTINGS_PANELS.versionlauncher).fadeIn(1000);
+    switchSettingsPanel(currentSettingsPanel, SETTINGS_PANELS.versionlauncher);
+}
+
 function setupSettingsTabs() {
     Array.from(document.getElementsByClassName('settingsTab')).map((val) => {
         if(val.hasAttribute('rSc')) {
@@ -42,6 +58,7 @@ function initSettings(tab = '#settings-version-launcher-panel') {
     $('#' + tab).fadeIn(250);
     currentSettingsPanel = '#' + tab;
     $('#' + tab + '-button').addClass('selected').prop("disabled", true);
+    initSettingsView();
 }
 
 setupSettingsTabs();
