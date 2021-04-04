@@ -1,5 +1,5 @@
 const $ = require('jquery');
-const {remote, shell, webFrame, ipcRenderer, remote, app} = require('electron');
+const {remote, shell, webFrame, ipcRenderer, app} = require('electron');
 
 const LoggerUtil = require('./assets/js/loggerutil');
 const request = require('request');
@@ -16,16 +16,6 @@ process.traceProcessWarnings = true;
 process.traceDeprecation = true;
 
 loggerLauncher.log("Chargement des variables");
-
-//version Actuel
-var version = ("./app/assets/distri.json");
-
-let rawdata = fs.readFileSync(version);
-let versions = JSON.parse(rawdata);
-
-VersionLauncher = versions.launcher.version;
-
-console.log("Actuel Version : " + VersionLauncher);
 
 window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
@@ -60,8 +50,8 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
-        refreshServer();
         updaterVerify();
+        initLauncherHomePanel();
         showMainUI(VIEWS.launcher);
         initLauncherView();
     }else{

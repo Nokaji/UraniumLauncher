@@ -14,8 +14,6 @@ function switchLauncherPanel(current, next) {
 function initLauncherView() {
     currentLauncherPanel = LAUNCHER_PANELS.home;
     $(LAUNCHER_PANELS.home).fadeIn(1000);
-    
-    initLauncherHomePanel();
 }
 
 // Header Functions

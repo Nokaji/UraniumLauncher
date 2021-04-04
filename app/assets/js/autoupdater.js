@@ -1,12 +1,16 @@
 const fs = require('fs');
 const axios = require('axios');
 
+const electron = require('electron');
+
 const os = require('os');
 
 var version = ("./app/assets/distri.json");
 
 let rawdata = fs.readFileSync(version);
 let versions = JSON.parse(rawdata);
+
+let forceUpdate = false;
 
 VersionLauncher = versions.launcher.version;
 
@@ -18,30 +22,30 @@ function updaterVerify(){
     .then(response => {
         VersionLauncherMin = response.data.launcher.version;
         console.log("Récents version " + VersionLauncherMin);
-        let forceUpdate = false;
-        if(VersionLauncherMin > versionLauncher){
+        if(VersionLauncherMin == VersionLauncher){
+            console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
+        }else{
             let forceUpdate = true;
-            updateDownload();
+            var appVersion = electron.remote.app.getVersion();
+            console.log(appVersion);
+            var fileexe;
+            if(process.platform === 'darwin') {
+                fileexe = '.icns';
+            } 
+            else if(process.platform === 'win32') {
+                fileexe = '.exe';
+            }
+            else{
+                fileexe = '.dmg';
+            }
+            if(VersionLauncherMin != VersionLauncher){
+                if(forceUpdate == true){
+                    ipcRenderer.send("download", {
+                        url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + fileexe,
+                        properties: {directory: electron.remote.app.getPath("temp")}
+                    });
+                }
+            }
         }
     });
-    }
-
-function updateDownload(){
-    filename = response.data.launcher.version;
-    if(process.platform === 'darwin') {
-        filename = filename + '.icns';
-    } 
-    else if(process.platform === 'win32') {
-        filename = filename + '.exe';
-    }
-    else{
-        filename = filename + '.dmg';
-    }
-
-    if(forceUpdate == true){
-        ipcRenderer.send("download", {
-            url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + file,
-            properties: {directory: electron.remote.app.getPath("temp")}
-        });
-    }
 }
