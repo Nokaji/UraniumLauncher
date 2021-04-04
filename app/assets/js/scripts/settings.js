@@ -69,11 +69,3 @@ setupSettingsTabs();
  $("#settings-save-button").click(function() {
     switchView(getCurrentView(), VIEWS.launcher);
 });
-
-document.addEventListener('keydown', (e) => {
-    if(getCurrentView() === VIEWS.settings) {
-        if(e.key === 'Escape') {
-            switchView(getCurrentView(), VIEWS.launcher);
-        }
-    }
-});

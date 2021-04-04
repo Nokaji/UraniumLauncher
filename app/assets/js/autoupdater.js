@@ -24,14 +24,11 @@ function updaterVerify(){
             console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
             setOverlayContent('Le Launcher est à jour(Version : '  + VersionLauncher + ")",
             "Le Launcher est à jour tu n'as pas besoins de télécharger la version",
-            'Fermer', null, 20, 'Le Popup va se fermer dans');
+            'Fermer', null);
             toggleOverlay(true);
             setCloseHandler(() => {
                 toggleOverlay(false);
-            });
-            setTimeout(function() {
-                toggleOverlay(false);
-            }, 20000);
+            })
         }else{
             if(VersionLauncherMin != VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
@@ -42,23 +39,28 @@ function updaterVerify(){
                     toggleOverlay(false);
                 });
                 setActionHandler(() => {
-                    downloadUpdate();
+                    prepareUpdate();
                 });
             }
         }
     });
 }
 
+function prepareUpdate(){
+    toggleOverlay(false);
+    setGameUpdateOverlayDownloadProgress(0, 'green');
+    setGameUpdateOverlayContent();
+    toggleGameUpdateOverlay(true);
+    setGameUpdateOverlayDownload("Préparation de la mise à jour");
+    setTimeout(function() {
+        downloadUpdate();
+    }, 5000);
+
+}
+
 function downloadUpdate(){
-    setOverlayContent('Téléchargement en Préparation !',
-    'La nouvelle version du launcher est en cours de téléchargement, ne ferme pas le launcher si tu veux la nouvelle version',
-    'Fermer le launcher', 'Attendre et Fermer le popup');
-    setCloseHandler(() => {
-        closeLauncher();
-    });
-    setActionHandler(() => {
-        toggleOverlay(false);
-    });
+    setGameUpdateOverlayDownloadProgress(35, 'green');
+    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..");
     var fileexe;
     if(process.platform === 'darwin') {
         fileexe = '.dmg';
@@ -93,15 +95,12 @@ function downloadComplete(){
     }
     ipcRenderer.on("download complete", (event, file) => {
         console.log("Downloaded " + file);
-        setOverlayContent('Téléchargement est Terminé',
-        'Le Téléchargement est fini le launcher va se redémarrer automatiquement :)',
-        'Installer La Mise à Jour', null);
-        setCloseHandler(() => {
-            toggleOverlay(false);
-        });
+        setGameUpdateOverlayDownloadProgress(85, 'green');
+        setGameUpdateOverlayDownload("Téléchargement Complété, Installation de la mise a jour");
 
         executeFile();
-
+        setGameUpdateOverlayDownloadProgress(100, 'green');
+        setGameUpdateOverlayDownload("Redémarrage du launcher !");
         setTimeout(closeLauncher, 5000);
     });
 }
