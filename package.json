@@ -32,6 +32,7 @@
     "discord-rpc": "^3.2.0",
     "ejs": "^2.7.1",
     "ejs-electron": "^2.0.3",
+    "electron-dl": "^3.2.1",
     "electron-online": "^1.0.0",
     "electron-updater": "^4.1.2",
     "fs": "0.0.1-security",
@@ -49,6 +50,7 @@
     "cross-env": "^5.2.1",
     "electron": "^7.0.0",
     "electron-builder": "^21.2.0",
+    "electron-packager": "^8.1.0",
     "eslint": "^5.16.0"
   },
   "repository": {

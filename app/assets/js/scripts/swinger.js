@@ -1,5 +1,5 @@
 const $ = require('jquery');
-const {remote, shell, webFrame, ipcRenderer} = require('electron');
+const {remote, shell, webFrame, ipcRenderer, remote, app} = require('electron');
 
 const LoggerUtil = require('./assets/js/loggerutil');
 const request = require('request');
@@ -7,8 +7,6 @@ const cp = require('child_process');
 const path = require('path');
 
 const isDev = require('./assets/js/isdev');
-const fs = require('fs');
-const axios = require('axios');
 
 const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');
 const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
@@ -31,23 +29,6 @@ console.log("Actuel Version : " + VersionLauncher);
 
 window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
-}
-
-function updaterVerify(){
-//Version Récente
-axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json")
-.then(response => {
-    VersionLauncherMin = response.data.launcher.version;
-    console.log("Récents version " + VersionLauncherMin);
-    if(VersionLauncher > VersionLauncherMin){
-        console.log(VersionLauncher + " est plus grand que " + VersionLauncherMin);
-    }else{
-        console.log(VersionLauncher + " est plus petit que " + VersionLauncherMin);
-        if(VersionLauncher == VersionLauncher){
-            console.log(VersionLauncher + " est égal à " + VersionLauncherMin);
-        }
-    }
-});twr9PRGCrH80FQEa
 }
 
 // Disable zoom, needed for darwin.
