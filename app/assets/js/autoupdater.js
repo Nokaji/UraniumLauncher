@@ -18,12 +18,13 @@ console.log("Actuel Version : " + VersionLauncher);
 
 function updaterVerify(){
     //Version Récente
-    axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/test_distri.json")
+    axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json")
     .then(response => {
         VersionLauncherMin = response.data.launcher.version;
         console.log("Récents version " + VersionLauncherMin);
         if(VersionLauncherMin == VersionLauncher){
             console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
+            document.getElementById("")
         }else{
             let forceUpdate = true;
             var fileexe;

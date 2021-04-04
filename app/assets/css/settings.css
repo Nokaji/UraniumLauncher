@@ -312,6 +312,14 @@
     margin-top: 15px;
 }
 
+.version-container #version-actuel {
+    color: rgb(0, 177, 24);
+}
+
+.version-container #version-none-actuel{
+    color:rgba(240, 71, 71, 1);
+}
+
 /** 
 * User : Compte
 **/
