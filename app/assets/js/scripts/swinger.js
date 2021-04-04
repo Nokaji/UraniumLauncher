@@ -20,12 +20,14 @@ process.traceDeprecation = true;
 loggerLauncher.log("Chargement des variables");
 
 //version Actuel
-var version = ("./package.json");
+var version = ("./app/assets/distri.json");
 
 let rawdata = fs.readFileSync(version);
 let versions = JSON.parse(rawdata);
 
-console.log("Actuel Version : " + versions.version);
+VersionLauncher = versions.launcher.version;
+
+console.log("Actuel Version : " + VersionLauncher);
 
 window.eval = global.eval = function () {
     throw new Error('Sorry, this app does not support window.eval().');
@@ -37,8 +39,15 @@ axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/d
 .then(response => {
     VersionLauncherMin = response.data.launcher.version;
     console.log("Récents version " + VersionLauncherMin);
-    updaterVerifyUpdate();
-});
+    if(VersionLauncher > VersionLauncherMin){
+        console.log(VersionLauncher + " est plus grand que " + VersionLauncherMin);
+    }else{
+        console.log(VersionLauncher + " est plus petit que " + VersionLauncherMin);
+        if(VersionLauncher == VersionLauncher){
+            console.log(VersionLauncher + " est égal à " + VersionLauncherMin);
+        }
+    }
+});twr9PRGCrH80FQEa
 }
 
 // Disable zoom, needed for darwin.
@@ -57,7 +66,6 @@ function initSwinger() {
     bindRangeSlider();
 
     showLoading();
-    setLoadingStatut("Chargement des éléments d'interface");
 }
 
 // Init Launcher Functions
@@ -88,148 +96,6 @@ function initLauncher() {
             initLauncher();
         }, 15000);
     }
-}
-
-function updaterVerifyUpdate(){
-    let forceUpdate = false;
-    var versionMin = parseLauncherVersion(VersionLauncherMin);
-    var version = parseLauncherVersion(launcherVersion);
-    if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
-        forceUpdate = true;
-    }
-    ipcRenderer.on('autoUpdateNotification', (event, arg, info) => {
-        switch(arg) {
-            case 'checking-for-update': {
-                loggerAutoUpdater.log('Checking for update..');
-                setLoadingStatut('Recherche de mise à jour');
-                break;
-            }
-            case 'update-available': {
-                loggerAutoUpdater.log('New update available:', info.version);
-
-                if(!forceUpdate && process.platform == 'win32') { // Temp
-                    setOverlayContent('Mise à jour du launcher disponible 😘',
-                        'Une nouvelle mise à jour pour le launcher est disponible.' 
-                        + '<br>Voulez-vous l\'installer maintenant ?',
-                        'Plus tard', 'Télécharger');
-                    toggleOverlay(true);
-                    setCloseHandler(() => {
-                        toggleOverlay(false);
-                        onAutoUpdateFinish();
-                    });
-                    setActionHandler(() => {
-                        toggleOverlay(false);
-                        setLoadingStatut('Préparation de la mise à jour (peut prendre un moment)');
-                        ipcRenderer.send('autoUpdateAction', 'downloadUpdate');
-                    });
-                }
-                else {
-                    if(process.platform == 'win32') { // Temp
-                        setOverlayContent('Mise à jour du launcher disponible 😘',
-                            'Une nouvelle mise à jour pour le launcher est disponible.' 
-                            + '<br>Voulez-vous l\'installer maintenant ?'
-                            + '<br><br><i class="fas fa-chevron-right"></i> Cette mise à niveau est obligatoire pour pouvoir continuer.',
-                            'Fermer le launcher', 'Télécharger');
-                        toggleOverlay(true);
-                        setCloseHandler(() => {
-                            toggleOverlay(false);
-                            closeLauncher();
-                        });
-                        setActionHandler(() => {
-                            toggleOverlay(false);
-                            setLoadingStatut('Préparation de la mise à jour (peut prendre un moment)');
-                            ipcRenderer.send('autoUpdateAction', 'downloadUpdate');
-                        });
-                    }
-                    else {
-                        setOverlayContent('Mise à jour du launcher disponible 😘',
-                            'Une nouvelle mise à jour pour le launcher est disponible.' 
-                            + '<br>Vous pouvez la télécharger sur le site officiel de Uranium.'
-                            + '<br><br><i class="fas fa-chevron-right"></i> Cette mise à niveau est obligatoire pour pouvoir continuer.',
-                            'Fermer le launcher');
-                        toggleOverlay(true);
-                        setCloseHandler(() => {
-                            toggleOverlay(false);
-                            closeLauncher();
-                        });
-                    }
-                }
-                break;
-            }
-            case 'update-not-available': {
-                if((version.build < versionMin.build) || (version.update < versionMin.update) || (version.minor < versionMin.minor) || (version.major < versionMin.major)) {
-                    setOverlayContent('Launcher obselète',
-                            'Votre launcher est obselète !' 
-                            + '<br><br><i class="fas fa-chevron-right"></i> Merci de retélécharger le launcher sur le site officiel de Uranium.',
-                            'Fermer le launcher');
-                        toggleOverlay(true);
-                        setCloseHandler(() => {
-                            closeLauncher();
-                        });
-                    return;
-                }
-                else {
-                    onAutoUpdateFinish();
-                }
-                break;
-            }
-            case 'download-progress': {
-                setLoadingStatut('Mise à jour en cours (' + Math.round(info.percent) + "%)");
-                break;
-            }
-            case 'update-downloaded': {
-                loggerAutoUpdater.log('Update ' + info.version + ' ready to be installed.');
-
-                setOverlayContent('La mise à jour est prêt à être installé 😁',
-                    'Cliquer sur installer pour lancer l\'installation de ma mise à jour du launcher.',
-                    'Plus tard (Ferme le launcher)', 'Installer');
-                toggleOverlay(true);
-                setCloseHandler(() => {
-                    closeLauncher();
-                });
-                setActionHandler(() => {
-                    toggleOverlay(false);
-                    ipcRenderer.send('autoUpdateAction', 'installUpdateNow');
-                });
-                break;
-            }
-            case 'ready': {
-                ipcRenderer.send('autoUpdateAction', 'checkForUpdate');
-                break;
-            }
-            case 'realerror': {
-                if(info != null && info.code != null) {
-                    if(info.code === 'ERR_UPDATER_INVALID_RELEASE_FEED') {
-                        loggerAutoUpdater.log('No suitable releases found.');
-                    } 
-                    else if(info.code === 'ERR_XML_MISSED_ELEMENT') {
-                        loggerAutoUpdater.log('No releases found.');
-                    } 
-                    else {
-                        loggerAutoUpdater.error('Error during update check..', info);
-                        loggerAutoUpdater.debug('Error Code:', info.code);
-                    }
-
-                    setOverlayContent('Impossible de se connecter à Internet 🌐',
-                        '✋🏽Vérifiez votre connexion et votre proxy si vous en utilisez un.',
-                        'Fermer le launcher', 'Réessayer');
-                    toggleOverlay(true);
-                    setCloseHandler(() => {
-                        closeLauncher();
-                    });
-                    setActionHandler(() => {
-                        toggleOverlay(false);
-                        ipcRenderer.send('autoUpdateAction', 'initAutoUpdater');
-                    });
-                }
-                break;
-            }
-            default: {
-                loggerAutoUpdater.log('Unknown argument', arg);
-                break;
-            }
-        }
-    });
 }
 
 // #endregion
