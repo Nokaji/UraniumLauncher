@@ -53,6 +53,15 @@ function updaterVerify(){
 }
 
 function downloadUpdate(){
+    setOverlayContent('Version Launcher en cours',
+    'La nouvelle version du launcher est en cours de téléchargement, ne ferme pas le launcher si tu veux la nouvelle version',
+    'Fermer le launcher', 'Attendre et Fermer le popup');
+    setCloseHandler(() => {
+        closeLauncher();
+    });
+    setActionHandler(() => {
+        toggleOverlay(false);
+    });
     var fileexe;
     if(process.platform === 'darwin') {
         fileexe = '.dmg';
@@ -89,14 +98,10 @@ function downloadComplete(){
             console.log(data.toString());
             });
         }
-        
-        function quitApp() {
-            ipcRenderer.send("quit", {});
-        }
 
         executeFile();
 
-        setTimeout(quitApp, 5000);
+        setTimeout(closeLauncher, 5000);
 
     });
 }
