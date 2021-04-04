@@ -313,10 +313,12 @@
 }
 
 .version-container #version-actuel {
+    margin-top: 2%;
     color: rgb(0, 177, 24);
 }
 
 .version-container #version-none-actuel{
+    margin-top: 2%;
     color:rgba(240, 71, 71, 1);
 }
 

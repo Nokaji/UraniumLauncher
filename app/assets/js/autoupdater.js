@@ -31,23 +31,26 @@ function updaterVerify(){
         }else{
             document.getElementById("version-none-actuel").style.visibility = "visible";
             document.getElementById("version-actuel").style.visibility = "hidden";
-            let forceUpdate = true;
-            var fileexe;
-            if(process.platform === 'darwin') {
-                fileexe = '.dmg';
-            } 
-            else if(process.platform === 'win32') {
-                fileexe = '.exe';
-            }
-            else{
-                fileexe = '.';
-            }
-            if(VersionLauncherMin != VersionLauncher){
-                if(forceUpdate == true){
-                    ipcRenderer.send("download", {
-                        url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + fileexe,
-                        properties: {directory: electron.remote.app.getPath("temp")}
-                    });
+            document.getElementById("download-update").style.visibility = "visible";
+            function downloadUpdate(){
+                let forceUpdate = true;
+                var fileexe;
+                if(process.platform === 'darwin') {
+                    fileexe = '.dmg';
+                } 
+                else if(process.platform === 'win32') {
+                    fileexe = '.exe';
+                }
+                else{
+                    fileexe = '';
+                }
+                if(VersionLauncherMin != VersionLauncher){
+                    if(forceUpdate == true){
+                        ipcRenderer.send("download", {
+                            url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + fileexe,
+                            properties: {directory: electron.remote.app.getPath("temp")}
+                        });
+                    }
                 }
             }
         }
