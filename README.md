@@ -3,7 +3,7 @@
 <p align="center">Uranium Launcher - Beta</p>
 <p align="center">
     <img src="https://img.shields.io/badge/build-dev-red.svg?style=for-the-badge" alt="build">
-    <img src="https://img.shields.io/badge/version-v0.0.01-red.svg?style=for-the-badge" alt="version"> 
+    <img src="https://img.shields.io/badge/version-v0.0.1-red.svg?style=for-the-badge" alt="version"> 
     <img src="https://img.shields.io/badge/dist-windows,%20linux,%20macos-blue.svg?style=for-the-badge" alt="distribution">
 </p>
 
