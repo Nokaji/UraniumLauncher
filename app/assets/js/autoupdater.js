@@ -18,7 +18,7 @@ console.log("Actuel Version : " + VersionLauncher);
 
 function updaterVerify(){
     //Version Récente
-    axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/distri.json")
+    axios.get("https://beta-uranium.yvleis.fr/ressources/download/launcher/sources/test_distri.json")
     .then(response => {
         VersionLauncherMin = response.data.launcher.version;
         console.log("Récents version " + VersionLauncherMin);

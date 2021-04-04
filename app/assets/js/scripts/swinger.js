@@ -50,7 +50,6 @@ document.addEventListener('readystatechange', function() {
 
 function initLauncher() {
     if(navigator.onLine){
-        updaterVerify();
         initLauncherHomePanel();
         showMainUI(VIEWS.launcher);
         initLauncherView();

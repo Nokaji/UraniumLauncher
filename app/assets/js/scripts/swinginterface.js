@@ -9,7 +9,8 @@
      launcher: '#launcher-view',
      login: '#login-view',
      loginmicrosoft: '#login-view-microsoft',
-     loginmojang: '#login-view-mojang'
+     loginmojang: '#login-view-mojang',
+     settings: '#settings-view'
  }
  
  function switchView(current, next, onNextFade = () => {}) {

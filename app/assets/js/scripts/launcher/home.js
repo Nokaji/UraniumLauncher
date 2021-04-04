@@ -6,12 +6,11 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
       }, 1500);
  }
 
- /*
+ 
  $("#launcher-home-options-button").click(function() {
      switchView(getCurrentView(), VIEWS.settings);
-     initSettings();
  });
- */
+ 
  $launcherHomePlayButton.click(function() {
      initLoginView();
  });
