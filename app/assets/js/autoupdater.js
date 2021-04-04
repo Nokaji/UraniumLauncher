@@ -3,8 +3,6 @@ const axios = require('axios');
 
 const electron = require('electron');
 
-const 
-
 const os = require('os');
 
 var version = ("./app/assets/distri.json");
