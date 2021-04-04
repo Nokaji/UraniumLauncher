@@ -26,8 +26,6 @@ function updaterVerify(){
             console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
         }else{
             let forceUpdate = true;
-            var appVersion = electron.remote.app.getVersion();
-            console.log(appVersion);
             var fileexe;
             if(process.platform === 'darwin') {
                 fileexe = '.icns';
