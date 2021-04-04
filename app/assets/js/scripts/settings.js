@@ -1,25 +1,62 @@
 let currentSettingsPanel;
 
-const LOGIN_PANELS = {
-    home: '#launcher-home-panel',
-    store: '#launcher-store-panel',
-    betalauncher: '#launcher-betalauncher-panel',
-    maintenance: '#launcher-maintenance-panel'
+function setupSettingsTabs() {
+    Array.from(document.getElementsByClassName('settingsTab')).map((val) => {
+        if(val.hasAttribute('rSc')) {
+            val.onclick = () => {
+                settingsNavItemListener(val);
+            }
+        }
+    })
 }
 
-function switchSettingsPanel(current, next) {
-    currentSettingsPanel = next;
-    $(`${current}`).hide();
-    $(`${next}`).fadeIn(500);
+function settingsNavItemListener(ele) {
+    var navItems = $(".selected");
+    if(navItems.hasClass('settingsTab')) {
+        navItems.removeClass("selected");
+        navItems.attr("disabled", false);
+    }
+
+    let oldPanel = currentSettingsPanel;
+    ele.className += ' selected';
+    ele.disabled = true;
+    currentSettingsPanel = '#' + ele.getAttribute('rSc');
+
+    $(oldPanel).hide();
+    $(currentSettingsPanel).fadeIn(250);
 }
 
-function initSettingsView() {
-    currentSettingsPanel = VIEWS.settings;
-    $(VIEWS.settings).fadeIn(1000);
-    switchView(getCurrentView(), VIEWS.settings);
-    initSettingsPanel();
+function initSettings(tab = '#settings-version-launcher-panel') {
+    initSettingsLauncherVersionTab();
+
+    var navItems = $(".selected");
+    if(navItems.hasClass('settingsTab')) {
+        navItems.removeClass("selected");
+        navItems.attr("disabled", false);
+    }
+
+    if(currentSettingsPanel != null) {
+        $(currentSettingsPanel).hide();
+    }
+
+    $('#' + tab).fadeIn(250);
+    currentSettingsPanel = '#' + tab;
+    $('#' + tab + '-button').addClass('selected').prop("disabled", true);
 }
 
-function initSettingsPanel() {
-    switchView(getCurrentView(), VIEWS.settings);
-}
+setupSettingsTabs();
+
+/**
+ * Saves
+ */
+ $("#settings-save-button").click(function() {
+    switchView(getCurrentView(), VIEWS.launcher);
+});
+
+document.addEventListener('keydown', (e) => {
+    if(getCurrentView() === VIEWS.settings) {
+        if(e.key === 'Escape') {
+            switchView(getCurrentView(), VIEWS.launcher);
+        }
+    }
+});

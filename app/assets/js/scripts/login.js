@@ -16,3 +16,21 @@ $("#login-mojang").click(function() {
 $("#login-microsoft").click(function() {
     switchView(getCurrentView(), VIEWS.loginmicrosoft);
 });
+
+document.addEventListener('keydown', (e) => {
+    if(getCurrentView() === VIEWS.loginmojang) {
+        if(e.key === 'Escape') {
+            switchView(getCurrentView(), VIEWS.launcher);
+        }
+    }
+    if(getCurrentView() === VIEWS.loginmicrosoft){
+        if(e.key === 'Escape') {
+            switchView(getCurrentView(), VIEWS.launcher);
+        }
+    }
+    if(getCurrentView() === VIEWS.login){
+        if(e.key === 'Escape') {
+            switchView(getCurrentView(), VIEWS.launcher);
+        }
+    }
+});

@@ -263,6 +263,54 @@
 .range-slider-bar {
     background: rgba(11, 199, 92);
 }
+/**
+* Launcher : Version
+**/
+
+.version-info-container{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    background-color: rgba(59, 59, 59, 0.7);
+    padding: 20px;
+
+    border-radius: 5px;
+    width: 100%;
+}
+
+.version-container {
+    float: left;
+    letter-spacing: 1px;
+
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.version-container .group {
+    margin-bottom: 15px;
+}
+
+.version-container .group-name {
+    font-size: 11px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.version-container .group-value {
+    color: #838383;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.version-container button.group-btn {
+    background-color: rgb(0, 177, 24);
+    padding: 2%;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    margin-top: 15px;
+}
 
 /** 
 * User : Compte

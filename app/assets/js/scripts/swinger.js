@@ -211,7 +211,9 @@ function showLoading() {
 
     $('#loading-view').fadeIn(500);
 
-    setTimeout(hideLoading(), 5000);
+    setTimeout(function() {
+        hideLoading();
+    }, 6000);
     initLauncher();
 }
 

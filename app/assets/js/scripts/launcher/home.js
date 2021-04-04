@@ -8,7 +8,11 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
 
  
  $("#launcher-home-options-button").click(function() {
-     switchView(getCurrentView(), VIEWS.settings);
+     /*
+    initSettingsView();*/
+    //test
+    switchView(getCurrentView(), VIEWS.settings);
+    initSettings();
  });
  
  $launcherHomePlayButton.click(function() {
