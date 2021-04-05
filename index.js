@@ -13,12 +13,6 @@ function initialize(){
 		return app.quit();
     }
 
-    ipcMain.on("download", (e, info) => {
-        console.log("Download starting");
-        download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
-            .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
-    });
-
     app.on('ready', () => {
         createWindow();
     });
@@ -103,3 +97,12 @@ function makeSingleInstance() {
 }
 
 initialize();
+
+ipcMain.on("download", (e, info) => {
+    console.log("Download starting");
+    download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
+        .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
+});
+ipcMain.on("quit", (e, data) => {
+    app.quit()
+});

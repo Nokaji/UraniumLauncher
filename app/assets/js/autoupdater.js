@@ -86,10 +86,10 @@ function downloadUpdate(){
         properties: {directory: electron.remote.app.getPath("temp")}
     });
     downloadComplete();
-    console.log("Télécharger complété !");
 }
 
 function downloadComplete(){
+    console.log("Téléchargement complété !");
     function executeFile(file) {
             
         var child = require('child_process').execFile;
@@ -108,8 +108,9 @@ function downloadComplete(){
         console.log("Downloaded " + file);
         setGameUpdateOverlayDownloadProgress(85, 'green');
         setGameUpdateOverlayDownload("Téléchargement Complété, Installation de la mise a jour");
-
+        
         executeFile(file);
+        console.log("Fichier Lancée");
         setGameUpdateOverlayDownloadProgress(100, 'green');
         setGameUpdateOverlayDownload("Redémarrage du launcher !");
         console.log("Redémarrage du launcher");
