@@ -29,8 +29,6 @@ function updaterVerify(){
         else{
             fileexe = '';
         }
-        console.log("https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin + "/" + VersionLauncherMin + fileexe)
-        
         console.log("Récents version " + VersionLauncherMin);
         if(VersionLauncherMin == VersionLauncher){
             console.log("Le Launcher est à jour(Version : " + VersionLauncher + ")");
