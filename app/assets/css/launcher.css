@@ -489,15 +489,8 @@
 /* #region */
 
 #launcher-home-panel .block-play {
-    width: 250px;
-    height: 775px;
-    position: relative;
-    bottom: 425px;
-    left: 390%;
-    border-radius: 0px;
-    background: rgb(0, 177, 24);
-    display: flex;
-    align-items: center;
+    width: 100%;
+    background: transparent;
 }
 
 /** Block Play Button **/
