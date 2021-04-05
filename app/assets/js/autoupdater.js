@@ -89,22 +89,24 @@ function downloadUpdate(){
 }
 
 function downloadComplete(){
-    console.log("Téléchargement complété !");
-    function executeFile(file) {
-            
-        var child = require('child_process').execFile;
-        var executablePath = file;
 
-        child(executablePath, function(err, data) {
-        if(err){
-            console.error(err);
-            return;
-        }
-    
-        console.log(data.toString());
-        });
-    }
     ipcRenderer.on("download complete", (event, file) => {
+        console.log("Téléchargement complété !");
+        function executeFile(file) {
+            
+            var child = require('child_process').execFile;
+            var executablePath = file;
+    
+            child(executablePath, function(err, data) {
+            if(err){
+                console.error(err);
+                return;
+            }
+        
+            console.log(data.toString());
+            });
+        }
+
         console.log("Downloaded " + file);
         setGameUpdateOverlayDownloadProgress(85, 'green');
         setGameUpdateOverlayDownload("Téléchargement Complété, Installation de la mise a jour");
