@@ -6,7 +6,7 @@ const {ipcRenderer} = require('electron');
 
 const os = require('os');
 
-VersionLauncher = "0.0.6";
+VersionLauncher = "0.0.5";
 
 console.log("Actuel Version : " + VersionLauncher);
 
@@ -85,7 +85,7 @@ function prepareUpdate(){
 function downloadUpdate(){
     console.log("Téléchargement en Préparations");
     setGameUpdateOverlayDownloadProgress(35, 'green');
-    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..");
+    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..(" + VersionLauncherMin + ")");
     var fileexe;
     if(process.platform === 'darwin') {
         fileexe = '.dmg';
