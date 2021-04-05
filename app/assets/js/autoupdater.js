@@ -120,16 +120,15 @@ function downloadComplete(){
         setGameUpdateOverlayDownloadProgress(100, 'green');
         toggleGameUpdateOverlay(false);
         setOverlayContent('Redémarrage !',
-            'Voulez vous Fermer le laucher ou le redémarrer ?',
-            'Fermer', 'Redémarrer');
-            toggleOverlay(true);
-            setCloseHandler(() => {
-                quitApp();
-            });
-            setActionHandler(() => {
-                relaunchapp();
-            });
-            console.log("New Version Update !");
+        'Voulez vous Fermer le laucher ou le redémarrer ?',
+        'Fermer', 'Redémarrer');
+        setCloseHandler(() => {
+            quitApp();
+        });
+        setActionHandler(() => {
+            relaunchapp();
+        });
+        console.log("New Version Update !");
         toggleOverlay(true);
     });
 }
