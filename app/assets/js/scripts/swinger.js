@@ -31,6 +31,11 @@ $(function() {
     initSwinger();
 })
 
+function relaunchapp(){
+    remote.app.relaunch();
+    remote.app.exit(0);
+}
+
 function initSwinger() {
     loggerSwinger.log("Swiger Initializing.");
     frameEvent();

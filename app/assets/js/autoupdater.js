@@ -6,9 +6,13 @@ const {ipcRenderer} = require('electron');
 
 const os = require('os');
 
-VersionLauncher = "0.0.2";
+VersionLauncher = "0.0.5";
 
 console.log("Actuel Version : " + VersionLauncher);
+
+function quitApp() {
+    ipcRenderer.send("quit", {});
+}
 
 function updaterVerify(){
     //Version Récente
@@ -114,8 +118,18 @@ function downloadComplete(){
         executeFile(file);
         console.log("Fichier Lancée");
         setGameUpdateOverlayDownloadProgress(100, 'green');
-        setGameUpdateOverlayDownload("Redémarrage du launcher !");
-        console.log("Redémarrage du launcher");
-        setTimeout(closeLauncher, 5000);
+        toggleGameUpdateOverlay(false);
+        setOverlayContent('Redémarrage !',
+            'Voulez vous Fermer le laucher ou le redémarrer ?',
+            'Fermer', 'Redémarrer');
+            toggleOverlay(true);
+            setCloseHandler(() => {
+                quitApp();
+            });
+            setActionHandler(() => {
+                relaunchapp();
+            });
+            console.log("New Version Update !");
+        toggleOverlay(true);
     });
 }
