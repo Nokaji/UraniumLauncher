@@ -40,7 +40,7 @@ function updaterVerify(){
                 toggleOverlay(false);
             })
         }else{
-            if(VersionLauncherMin < VersionLauncher){
+            if(VersionLauncherMin > VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
                 'Télécharge la version du launcher pour pouvoir avoir la nouvelle version !',
                 'Fermer', 'Télécharger');
