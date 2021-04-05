@@ -5,7 +5,7 @@ const electron = require('electron');
 
 const os = require('os');
 
-VersionLauncher = "0.0.3";
+VersionLauncher = "0.0.4";
 
 console.log("Actuel Version : " + VersionLauncher);
 
@@ -25,7 +25,7 @@ function updaterVerify(){
                 toggleOverlay(false);
             })
         }else{
-            if(VersionLauncherMin != VersionLauncher){
+            if(VersionLauncherMin > VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
                 'Télécharge la version du launcher pour pouvoir avoir la nouvelle version !',
                 'Fermer', 'Télécharger');
@@ -35,6 +35,14 @@ function updaterVerify(){
                 });
                 setActionHandler(() => {
                     prepareUpdate();
+                });
+            }else{
+                setOverlayContent('Le Launcher est Obselète',
+                "Le Launcher est Obselète télécharge le launcher sur le site d'Uranium",
+                'Fermer Le Launcher', null);
+                toggleOverlay(true);
+                setCloseHandler(() =>{
+                    closeLauncher();
                 });
             }
         }

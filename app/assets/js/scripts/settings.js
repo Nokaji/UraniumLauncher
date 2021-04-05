@@ -26,7 +26,7 @@ function settingsNavItemListener(ele) {
     $(currentSettingsPanel).fadeIn(250);
 }
 
-function initSettings(tab = '#settings-version-launcher-panel') {
+function initSettings(tab = 'settings-version-launcher-panel') {
     initSettingsLauncherVersionTab();
 
     var navItems = $(".selected");

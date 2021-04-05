@@ -1,6 +1,6 @@
 {
   "name": "uraniumlauncher",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "productName": "Uranium Launcher",
   "description": "Uranium Launcher",
   "author": "Uranium",
@@ -19,7 +19,8 @@
     "dist:win": "npm run dist -- WINDOWS",
     "dist:mac": "npm run dist -- MAC",
     "dist:linux": "npm run dist -- LINUX",
-    "lint": "eslint --config .eslintrc.json ."
+    "lint": "eslint --config .eslintrc.json .",
+    "build-electronforge": "rimraf ./dist && electron-forge start --"
   },
   "engines": {
     "node": "10.x.x"
@@ -33,6 +34,7 @@
     "ejs": "^2.7.1",
     "ejs-electron": "^2.0.3",
     "electron-dl": "^3.2.1",
+    "electron-forge": "^5.2.4",
     "electron-online": "^1.0.0",
     "electron-updater": "^4.1.2",
     "fs": "0.0.1-security",
