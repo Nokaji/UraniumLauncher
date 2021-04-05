@@ -140,8 +140,6 @@
     flex-direction: column;
 
     margin-top: -100px;
-
-    width: 100%;
 }
 
 .header-banner-content .banner-header {
@@ -162,8 +160,6 @@
 .banner-body {
     display: table;
     table-layout: fixed;
-
-    width: 100%;
 }
 
 .banner-body-content {
@@ -273,42 +269,6 @@
 }
 #launcher-home-panel .header-banner-content .banner-header .box-social .btn-social:hover {
     background: #3b3b3b;
-}
-
-#launcher-home-panel .header-banner-content .banner-header .box-user {
-    display: inline-flex;
-
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.05);
-
-    padding: 7px;
-
-    width: 42px;
-    height: 42px;
-}
-#launcher-home-panel .header-banner-content .banner-header .box-user .btn-user {
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-
-    text-align: center;
-    font-size: 18px;
-    color: #ffffff;
-}
-#launcher-home-panel .header-banner-content .banner-header .box-user .btn-user.avatar {
-    width: 28px;
-    height: 28px;
-
-    border-radius: 50%;
-}
-#launcher-home-panel .header-banner-content .banner-header .box-user .btn-user img {
-    display: block;
-    overflow: hidden;
-
-    width: 100%;
-    height: 100%;
-    
-    border-radius: inherit;
 }
 
 /* #endregion */
@@ -529,70 +489,20 @@
 /* #region */
 
 #launcher-home-panel .block-play {
-    padding: 24px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    background: rgba(255, 132, 0, 0.85);
+    width: 250px;
+    height: 775px;
+    position: relative;
+    bottom: 425px;
+    left: 390%;
+    border-radius: 0px;
+    background: rgb(0, 177, 24);
     display: flex;
     align-items: center;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.075);
-}
-#launcher-home-panel .block-play span {
-    position: relative;
-
-    padding-left: 6px;
-    top: 1px;
-    font-size: 17px;
-    letter-spacing: -0.01em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    font-weight: 500;
-    color: white;
-}
-#launcher-home-panel .block-play em {
-    display: inline-block;
-
-    font-weight: bold;
-    font-size: 15px;
-    text-shadow: 0 3px 1px rgba(0, 0, 0, 0.075);
-    letter-spacing: 4px;
-    border-radius: 4px;
-    margin: 0 3px 0 5px;
-    padding: 6px 6px 6px 10px;
-    background: rgba(255, 255, 255, 0.15);
-}
-
-#launcher-home-panel .block-play .button-group {
-    margin-left: auto;
-    display: block;
 }
 
 /** Block Play Button **/
-/* #region */
 
-#launcher-home-panel .block-play .button-group .btn {
-    display: inline-block;
-    margin-left: 5px;
-    height: 46px;
-    line-height: 48px;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 0 26px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #ff8400;
-    text-transform: uppercase;
-    border-radius: 4px;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
-}
-#launcher-home-panel .block-play .button-group .btn:hover {
-    background: white;
-    color: #ff8400;
-}
 
-/* #endregion */
-
-/* #endregion */
-
-/* #endregion */
 
 /**
 * Store panel
