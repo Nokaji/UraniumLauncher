@@ -48,7 +48,7 @@ function updaterVerify(){
             setActionHandler(() => {
                 prepareUpdate();
             });
-            console.log("New Version Update !")
+            console.log("New Version Update !");
         }
     });
 }
@@ -67,7 +67,7 @@ function prepareUpdate(){
 }
 
 function downloadUpdate(){
-    console.log("Téléchargement en Préparations")
+    console.log("Téléchargement en Préparations");
     setGameUpdateOverlayDownloadProgress(35, 'green');
     setGameUpdateOverlayDownload("Téléchargement de la mise a jour..");
     var fileexe;
@@ -80,7 +80,7 @@ function downloadUpdate(){
     else{
         fileexe = '';
     }
-    console.log("Téléchargement à Commencer")
+    console.log("Téléchargement à Commencer");
     ipcRenderer.send("download", {
         url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + fileexe,
         properties: {directory: electron.remote.app.getPath("temp")}

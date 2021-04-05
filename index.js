@@ -42,7 +42,9 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             webSecurity: true,
-            contextIsolation: false
+            contextIsolation: false,
+            enableRemoteModule: true,
+            worldSafeExecuteJavaScript: true
         },
         backgroundColor: '#2f2f2f'
     });
@@ -101,7 +103,7 @@ initialize();
 ipcMain.on("download", (e, info) => {
     console.log("Download starting");
     download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
-        .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
+        .then(dl => frame.webContents.send("download complete", dl.getSavePath()));
 });
 ipcMain.on("quit", (e, data) => {
     app.quit()
