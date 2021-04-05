@@ -9,6 +9,10 @@
   "bugs": {
     "url": "https://uranium.yvleis.fr/forum/Launcher.20/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nokaji/UraniumLauncher.git"
+  },
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -36,7 +40,7 @@
     "electron-dl": "^3.2.1",
     "electron-forge": "^5.2.4",
     "electron-online": "^1.0.0",
-    "electron-updater": "^4.1.2",
+    "electron-updater": "^4.3.8",
     "fs": "0.0.1-security",
     "fs-extra": "^7.0.1",
     "github-syntax-dark": "^0.5.0",
@@ -54,9 +58,5 @@
     "electron-builder": "^21.2.0",
     "electron-packager": "^8.1.0",
     "eslint": "^5.16.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nokaji/UraniumLauncher.git"
   }
 }

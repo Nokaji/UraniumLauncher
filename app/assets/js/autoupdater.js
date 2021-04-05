@@ -6,7 +6,7 @@ const {ipcRenderer} = require('electron');
 
 const os = require('os');
 
-VersionLauncher = "0.0.5";
+VersionLauncher = "0.0.6";
 
 console.log("Actuel Version : " + VersionLauncher);
 
