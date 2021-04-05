@@ -1,5 +1,5 @@
 const $ = require('jquery');
-const {remote, shell, webFrame, ipcRenderer, app} = require('electron');
+const {remote, shell, webFrame, app} = require('electron');
 
 const LoggerUtil = require('./assets/js/loggerutil');
 const request = require('request');

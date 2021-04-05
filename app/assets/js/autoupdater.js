@@ -2,6 +2,7 @@ const fs = require('fs');
 const axios = require('axios');
 
 const electron = require('electron');
+const {ipcRenderer} = require('electron');
 
 const os = require('os');
 
@@ -84,12 +85,12 @@ function downloadUpdate(){
         url: "https://github.com/Nokaji/UraniumLauncher/releases/download/" + VersionLauncherMin +"/" + VersionLauncherMin + fileexe,
         properties: {directory: electron.remote.app.getPath("temp")}
     });
-    console.log("Télécharger complété !");
     downloadComplete();
+    console.log("Télécharger complété !");
 }
 
 function downloadComplete(){
-    function executeFile() {
+    function executeFile(file) {
             
         var child = require('child_process').execFile;
         var executablePath = file;
@@ -108,7 +109,7 @@ function downloadComplete(){
         setGameUpdateOverlayDownloadProgress(85, 'green');
         setGameUpdateOverlayDownload("Téléchargement Complété, Installation de la mise a jour");
 
-        executeFile();
+        executeFile(file);
         setGameUpdateOverlayDownloadProgress(100, 'green');
         setGameUpdateOverlayDownload("Redémarrage du launcher !");
         console.log("Redémarrage du launcher");
