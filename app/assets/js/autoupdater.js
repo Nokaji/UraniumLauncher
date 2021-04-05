@@ -40,17 +40,31 @@ function updaterVerify(){
                 toggleOverlay(false);
             })
         }else{
-            setOverlayContent('Une nouvelle version du launcher est disponible !',
-            'Télécharge la version du launcher pour pouvoir avoir la nouvelle version !',
-            'Fermer', 'Télécharger');
-            toggleOverlay(true);
-            setCloseHandler(() => {
-                toggleOverlay(false);
-            });
-            setActionHandler(() => {
-                prepareUpdate();
-            });
-            console.log("New Version Update !");
+            if(VersionLauncherMin < VersionLauncher){
+                setOverlayContent('Une nouvelle version du launcher est disponible !',
+                'Télécharge la version du launcher pour pouvoir avoir la nouvelle version !',
+                'Fermer', 'Télécharger');
+                toggleOverlay(true);
+                setCloseHandler(() => {
+                    toggleOverlay(false);
+                });
+                setActionHandler(() => {
+                    prepareUpdate();
+                });
+                console.log("New Version Update !");
+            }else{
+                setOverlayContent('Launcher Obselète !',
+                "Le Launcher est Obselète merci de le retélécharge sur le site Officiel d'uranium !",
+                'Fermer Le Launcher', 'Télécharger');
+                toggleOverlay(true);
+                setCloseHandler(() => {
+                    closeLauncher();
+                });
+                setActionHandler(() => {
+                    
+                });
+                console.log("Launcher is obselète");
+            }
         }
     });
 }
