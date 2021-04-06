@@ -23,8 +23,7 @@
     "dist:win": "npm run dist -- WINDOWS",
     "dist:mac": "npm run dist -- MAC",
     "dist:linux": "npm run dist -- LINUX",
-    "lint": "eslint --config .eslintrc.json .",
-    "build-electronforge": "rimraf ./dist && electron-forge start --"
+    "lint": "eslint --config .eslintrc.json ."
   },
   "engines": {
     "node": "10.x.x"
