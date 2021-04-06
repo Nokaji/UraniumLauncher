@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.13",
-    "async": "^3.0.1-0",
     "axios": "^0.21.1",
     "discord-rich-presence": "0.0.8",
     "discord-rpc": "^3.2.0",
@@ -52,7 +51,7 @@
     "winreg": "^1.2.4"
   },
   "devDependencies": {
-    "cross-env": "^5.2.1",
+    "cross-env": "^7.0.3",
     "electron": "^7.0.0",
     "electron-builder": "^21.2.0",
     "electron-installer-windows": "^3.0.0",
