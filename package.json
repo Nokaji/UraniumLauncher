@@ -57,6 +57,6 @@
     "electron-builder": "^21.2.0",
     "electron-installer-windows": "^3.0.0",
     "electron-packager": "^8.1.0",
-    "eslint": "^5.16.0"
+    "eslint": "^7.15.0"
   }
 }
