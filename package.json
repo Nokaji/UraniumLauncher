@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.13",
+    "async": "^3.0.1-0",
     "axios": "^0.21.1",
     "discord-rich-presence": "0.0.8",
     "discord-rpc": "^3.2.0",
@@ -56,6 +57,6 @@
     "electron-builder": "^21.2.0",
     "electron-installer-windows": "^3.0.0",
     "electron-packager": "^8.1.0",
-    "eslint": "^7.15.0"
+    "eslint": "^5.16.0"
   }
 }
