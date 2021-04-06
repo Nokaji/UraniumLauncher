@@ -70,7 +70,7 @@ function updaterVerify(){
 }
 
 function prepareUpdate(){
-    console.log("Preparing update !")
+    console.log("Preparing update !");
     toggleOverlay(false);
     setGameUpdateOverlayDownloadProgress(0, 'green');
     setGameUpdateOverlayContent();
