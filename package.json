@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nokaji/UraniumLauncher.git"
+    "url": "git+https://github.com/Nokaji/UraniumLauncher.git"
   },
   "private": true,
   "main": "index.js",
@@ -33,15 +33,14 @@
     "async": "^3.0.1-0",
     "axios": "^0.21.1",
     "discord-rpc": "^3.2.0",
-    "ejs": "^3.1.6",
-    "ejs-electron": "^2.1.1",
-    "ejs-lint": "^1.1.0",
+    "ejs": "^2.7.1",
+    "ejs-electron": "^2.0.3",
     "electron-dl": "^3.2.1",
     "electron-forge": "^5.2.4",
     "electron-online": "^1.0.0",
-    "electron-updater": "^4.3.8",
+    "electron-updater": "^4.1.2",
     "fs": "0.0.1-security",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^7.0.1",
     "github-syntax-dark": "^0.5.0",
     "izitoast": "^1.4.0",
     "jquery": "^3.4.1",
