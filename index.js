@@ -109,3 +109,27 @@ ipcMain.on("download", (e, info) => {
 ipcMain.on("quit", (e, data) => {
     app.quit()
 });
+
+const RPC = require("discord-rpc");
+const rpc = new RPC.Client({
+    transport: "ipc"
+});
+
+rpc.on("ready", () => {
+    rpc.setActivity({
+        details: "Pvp - Faction",
+        state: "Dans les menus",
+        startTimestamp: new Date(),
+        largeImageKey: "assets_ura",
+        largeImageText: "Uranium",
+        smallImageKey: "uranium",
+        smallImageText : 'Non connecter',
+        buttons : [
+            {label : "Rejoind Nous !",url : "https://discord.gg/BBspwCWeEj"}
+                ]
+    })
+    console.log("Discord Rich Presence enabled")
+})
+rpc.login({
+    clientId: "747895284616528003"
+})
