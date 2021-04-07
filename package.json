@@ -9,10 +9,6 @@
   "bugs": {
     "url": "https://uranium.yvleis.fr/forum/Launcher.20/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nokaji/UraniumLauncher.git"
-  },
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -23,7 +19,8 @@
     "dist:win": "npm run dist -- WINDOWS",
     "dist:mac": "npm run dist -- MAC",
     "dist:linux": "npm run dist -- LINUX",
-    "lint": "eslint --config .eslintrc.json ."
+    "lint": "eslint --config .eslintrc.json .",
+    "build-electronforge": "rimraf ./dist && electron-forge start --"
   },
   "engines": {
     "node": "10.x.x"
@@ -51,11 +48,14 @@
     "winreg": "^1.2.4"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
+    "cross-env": "^5.2.1",
+    "electron": "^7.0.0",
     "electron-builder": "^21.2.0",
-    "electron": "^12.0.1",
-    "electron-installer-windows": "^3.0.0",
     "electron-packager": "^8.1.0",
     "eslint": "^5.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nokaji/UraniumLauncher.git"
   }
 }
