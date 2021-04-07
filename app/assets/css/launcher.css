@@ -194,6 +194,7 @@
     background: #2b2b2b;
 
     margin-bottom: 20px;
+    display: inline-block;
 }
 
 .block-container .block-title, .block-container .block-title a {
@@ -862,4 +863,16 @@
 
 #launcher-home-panel #panel-control-home-content .icon-link-panel-home:hover{
     color:rgba(255, 255, 255, 0.5);
+}
+
+/*Partner Body side bar*/
+.partner-sidebar {
+    display: table-cell;
+    vertical-align: top;
+
+    width: 300px;
+}
+
+.btn-link-partner{
+    display: inline-block;
 }
