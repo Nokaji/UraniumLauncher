@@ -29,6 +29,7 @@
     "adm-zip": "^0.4.13",
     "async": "^3.0.1-0",
     "axios": "^0.21.1",
+    "discord-rich-presence": "0.0.8",
     "discord-rpc": "^3.2.0",
     "ejs": "^2.7.1",
     "ejs-electron": "^2.0.3",

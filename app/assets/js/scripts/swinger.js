@@ -6,8 +6,6 @@ const request = require('request');
 const cp = require('child_process');
 const path = require('path');
 
-const cp = require('child_process');
-
 const isDev = require('./assets/js/isdev');
 
 const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');

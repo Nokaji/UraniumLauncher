@@ -38,7 +38,7 @@ function updaterVerify(){
             toggleOverlay(true);
             setCloseHandler(() => {
                 toggleOverlay(false);
-            });
+            })
         }else{
             if(VersionLauncherMin > VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
@@ -70,7 +70,7 @@ function updaterVerify(){
 }
 
 function prepareUpdate(){
-    console.log("Preparing update !");
+    console.log("Preparing update !")
     toggleOverlay(false);
     setGameUpdateOverlayDownloadProgress(0, 'green');
     setGameUpdateOverlayContent();
@@ -85,7 +85,7 @@ function prepareUpdate(){
 function downloadUpdate(){
     console.log("Téléchargement en Préparations");
     setGameUpdateOverlayDownloadProgress(35, 'green');
-    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..(" + VersionLauncherMin + ")");
+    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..");
     var fileexe;
     if(process.platform === 'darwin') {
         fileexe = '.dmg';

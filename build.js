@@ -1,3 +1,4 @@
+
 const builder = require('electron-builder');
 const Platform = builder.Platform;
 
