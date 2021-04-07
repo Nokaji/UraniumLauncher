@@ -3,6 +3,7 @@ const path = require('path');
 const url = require('url');
 const ejse = require('ejs-electron');
 const {download} = require("electron-dl");
+const ejs = require('ejs');
 
 let frame;
 
