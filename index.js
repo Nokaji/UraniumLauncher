@@ -1,9 +1,8 @@
-const {app, BrowserWindow, ipcMain} = require('electron');
+const {app, BrowserWindow, ipcMain, remote} = require('electron');
 const path = require('path');
 const url = require('url');
 const ejse = require('ejs-electron');
 const {download} = require("electron-dl");
-const ejs = require('ejs');
 
 let frame;
 
@@ -109,6 +108,7 @@ ipcMain.on("download", (e, info) => {
 ipcMain.on("quit", (e, data) => {
     app.quit()
 });
+
 
 const RPC = require("discord-rpc");
 const rpc = new RPC.Client({

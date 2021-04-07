@@ -25,16 +25,12 @@
         <div id="main">
             <!-- Launcher Panel -->
             <% include launcher.ejs %>
-
             <!-- Login Panel -->
             <% include login.ejs %>
-            
             <!-- LoginMojangAuth -->
             <% include login/loginmojang.ejs %>
-            
             <!-- LoginMicrosoftAuth -->
             <% include login/loginmicrosoft.ejs %>
-            
             <!-- Settings Panel -->
             <% include settings.ejs %>
         </div>
@@ -43,6 +39,7 @@
         <% include frame.ejs %>
         <!-- Overlay PopUp -->
         <% include overlay.ejs %>
+
         <div id="loading-view" style="display: none;">
             <div class="loading-container">
                 <img src="./assets/images/icons/icon.png" class="uranium-loader"></img>
