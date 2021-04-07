@@ -38,7 +38,7 @@ function updaterVerify(){
             toggleOverlay(true);
             setCloseHandler(() => {
                 toggleOverlay(false);
-            })
+            });
         }else{
             if(VersionLauncherMin > VersionLauncher){
                 setOverlayContent('Une nouvelle version du launcher est disponible !',
