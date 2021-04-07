@@ -85,7 +85,7 @@ function prepareUpdate(){
 function downloadUpdate(){
     console.log("Téléchargement en Préparations");
     setGameUpdateOverlayDownloadProgress(35, 'green');
-    setGameUpdateOverlayDownload("Téléchargement de la mise a jour..");
+    setGameUpdateOverlayDownload("Téléchargement de la mise a jour.. (" + VersionLauncherMin + ")");
     var fileexe;
     if(process.platform === 'darwin') {
         fileexe = '.dmg';

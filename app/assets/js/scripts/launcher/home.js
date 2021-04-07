@@ -38,16 +38,3 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
          }
      });
  }
-/*
- Test de PopUp Warning !
-
- function test_overlay(){
-    setOverlayContent('Ceci est un test',
-    'Ceci est un test alors rien à faire :)',
-    'Fermer le popup', null, 15, 'Tentative de reconnexion dans');
-    toggleOverlay(true);
-    setCloseHandler(() => {
-        closeLauncher();
-    });
- }
- */
