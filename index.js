@@ -109,7 +109,6 @@ ipcMain.on("quit", (e, data) => {
     app.quit()
 });
 
-
 const RPC = require("discord-rpc");
 const rpc = new RPC.Client({
     transport: "ipc"
