@@ -126,7 +126,7 @@ rpc.on("ready", () => {
         smallImageText : 'Non connecter',
         buttons : [
             {label : "Rejoind Nous !",url : "https://discord.gg/BBspwCWeEj"}
-                ]
+            ]
     })
     console.log("Discord Rich Presence enabled")
 })
