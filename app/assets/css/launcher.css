@@ -177,7 +177,8 @@
     display: table-cell;
     vertical-align: top;
 
-    width: 300px;
+    width: 350px;
+    display: inline-block;
 }
 
 /** Block **/
@@ -193,7 +194,7 @@
     font-size: 13px;
     background: #2b2b2b;
 
-    margin-bottom: 20px;
+    margin-bottom: 45px;
     display: inline-block;
 }
 
@@ -814,9 +815,11 @@
 /*Home Panel Login*/
 
 #launcher-home-panel .right-panel-home{
-    background: rgba(255, 255, 255, 0.041);
+    background: #2b2b2b;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.075);
     float: right;
-    border-radius: 15px;
+    border-radius: 4px;
+    border: none;
     background-position: 50% 35%;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -871,8 +874,31 @@
     vertical-align: top;
 
     width: 300px;
+    display: inline-block;
+}
+
+.partner{
+    display: inline-block;
+    font-size: 28px;
+    padding-right: 10px;
 }
 
 .btn-link-partner{
     display: inline-block;
+}
+
+.btn-social{
+    color: white;
+    border: white;
+}
+
+.btn-social:hover{
+    color: rgba(255, 255, 255, 0.5);
+    border: rgba(255, 255, 255, 0.5);
+}
+
+
+.servers-status{
+    display: inline-block;
+    width: 325px;
 }
