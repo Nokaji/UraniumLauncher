@@ -194,7 +194,10 @@
     font-size: 13px;
     background: #2b2b2b;
 
-    margin-bottom: 45px;
+    position: relative;
+    top: 30px;
+
+    margin-bottom: 15px;
     display: inline-block;
 }
 
@@ -901,4 +904,9 @@
 .servers-status{
     display: inline-block;
     width: 325px;
+}
+
+.icon-partner{
+    width: 25px;
+    height: auto;
 }
