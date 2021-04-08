@@ -858,7 +858,7 @@
     opacity: 0.5;
 }
 
-#launcher-home-panel #panel-control-home-content .icon-link-panel-home{
+.icon-link-panel-home{
     width: 40px;
     height: auto;
     padding: 1%;
@@ -867,7 +867,7 @@
     cursor: pointer;
 }
 
-#launcher-home-panel #panel-control-home-content .icon-link-panel-home:hover{
+.icon-link-panel-home:hover{
     color:rgba(255, 255, 255, 0.5);
 }
 
@@ -893,13 +893,22 @@
 .btn-social{
     color: white;
     border: white;
+    margin-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .btn-social:hover{
     color: rgba(255, 255, 255, 0.5);
-    border: rgba(255, 255, 255, 0.5);
 }
 
+.btn-social:focus{
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
 
 .servers-status{
     display: inline-block;
