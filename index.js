@@ -40,6 +40,7 @@ function createWindow() {
         resizable: true,
         frame: false,
         webPreferences: {
+            preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
             nodeIntegration: true,
             webSecurity: true,
             contextIsolation: false,
