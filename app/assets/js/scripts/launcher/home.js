@@ -11,7 +11,11 @@ const $launcherHomePlayButton = $('#launcher-home-play-button');
     switchView(getCurrentView(), VIEWS.settings);
     initSettings();
  });
- 
+
+ $("#ico-user-home-panel").click(function() {
+     initLoginView();
+ })
+
  $launcherHomePlayButton.click(function() {
      initLoginView();
  });
