@@ -10,7 +10,6 @@ const isDev = require('./assets/js/isdev');
 
 const loggerSwinger = LoggerUtil('%c[Swinger]', 'color: #000668; font-weight: bold');
 const loggerLauncher = LoggerUtil('%c[Launcher]', 'color: #000668; font-weight: bold');
-const loggerAutoUpdater = LoggerUtil('%c[AutoUpdater]', 'color: #209b07; font-weight: bold');
 
 process.traceProcessWarnings = true;
 process.traceDeprecation = true;
