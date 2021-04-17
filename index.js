@@ -100,7 +100,7 @@ function makeSingleInstance() {
 }
 
 initialize();
-
+/*
 ipcMain.on("download", (e, info) => {
     console.log("Download starting");
     download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
@@ -108,7 +108,7 @@ ipcMain.on("download", (e, info) => {
 });
 ipcMain.on("quit", (e, data) => {
     app.quit()
-});
+});*/
 
 const RPC = require("discord-rpc");
 const rpc = new RPC.Client({
@@ -132,4 +132,27 @@ rpc.on("ready", () => {
 })
 rpc.login({
     clientId: "747895284616528003"
+})
+//AutoUpdate
+app.on('ready', function()  {
+    autoUpdater.checkForUpdates();
+});
+autoUpdater.on('checking-for-update', () => {
+
+})
+autoUpdater.on('update-available', (info) => {
+
+})
+autoUpdater.on('update-not-available', (info) => {  
+
+})
+autoUpdater.on('error', (err) => {
+
+})
+autoUpdater.on('download-progress', (progressObj) => {
+
+})
+autoUpdater.on('update-downloaded', (info) => {
+    
+    autoUpdater.quitAndInstall();
 })

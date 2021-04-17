@@ -1,4 +1,4 @@
-const fs = require('fs');
+/*const fs = require('fs');
 const axios = require('axios');
 
 const electron = require('electron');
@@ -144,3 +144,5 @@ function downloadComplete(){
         toggleOverlay(true);
     });
 }
+
+*/
