@@ -113,3 +113,16 @@
     margin-top: -60px;
     margin-right: 20px;
 }
+
+.login-return{
+    color: rgb(255, 55, 55);
+    float: left;
+    padding: 25px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.login-return:hover{
+    color: rgb(246, 46, 46);
+}
